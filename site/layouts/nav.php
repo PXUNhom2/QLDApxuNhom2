@@ -11,8 +11,11 @@
                                         <div id="menuverti" class="block_content navbar_menuvertical">
                                             <ul class='nav_verticalmenu'>
                                              
-                                            <li class="level0">
+                                            <li class="has-child level0">
                                             	<a class='' href='#'><img class='' src='' alt=''> <span>Cate 1</span></a>
+                                                <ul class="level1">
+                                                    <li class="level1"><a class="" href=""><span>Ngao</span></a></li>
+                                                </ul>
                                             </li>
                                             <li class="level0">
                                                 <a class='' href='#'><img class='' src='' alt=''> <span>Cate 1</span></a>
@@ -35,9 +38,6 @@
                                             <li class="level0">
                                                 <a class='' href='#'><img class='' src='' alt=''> <span>Cate 1</span></a>
                                             </li>
-                                            
-                                            
-                                
                                             </ul class='nav_verticalmenu'>
                                         </div>
                                     </div>
