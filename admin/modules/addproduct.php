@@ -2,7 +2,7 @@
 
 <?php
 include_once 'function.php';
-$sqlSelectCat = "Select * from category";
+$sqlSelectCat = "Select * from subcategory";
 $resultCat = mysqli_query($conn, $sqlSelectCat) or die("Lỗi truy vấn");
 
 if (isset($_POST["addnew"])) {
@@ -10,6 +10,8 @@ if (isset($_POST["addnew"])) {
     $data = $_POST;
     $data["Status"] = ($data["Status"])?$data["Status"]:0;
     
+
+    //xu ly image
 $fileName="";
  $path = "../public/Uploads/product/";
 if(isset($_FILES["image"])){
@@ -35,7 +37,9 @@ if(isset($_FILES["image"])){
              }
              // echo "<prE>";print_r($_FILES);die;
     }
-    $data["image"] =$fileName; 
+    $data["image"] =$fileName;
+
+
     $sqlInsert = save($table,$data);
     mysqli_query($conn, $sqlInsert) or die("Lỗi thêm mới".$sqlInsert);
     header('Location: index.php?module=listproduct');
@@ -56,11 +60,11 @@ if(isset($_FILES["image"])){
                             <input id="ProductName"  type="text" name="ProductName"  placeholder="Nhập tên sản phẩm" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="CategoryID">Loại sản phẩm</label>
-                            <select name="CategoryID" id="CategoryID" class="form-control">
+                            <label for="SubCategoryID">Loại sản phẩm</label>
+                            <select name="SubCategoryID" id="SubCategoryID" class="form-control">
                                 <option value="">---Chọn loại sản phẩm---</option>
                                 <?php while ($rowcat = mysqli_fetch_assoc($resultCat)){?>
-                                <option value="<?php echo $rowcat["CategoryID"]?>"><?php echo  $rowcat["CategoryName"]?></option>
+                                <option value="<?php echo $rowcat["SubCategoryID"]?>"><?php echo  $rowcat["SubName"]?></option>
                                 <?php }?>
                             </select>
                         </div>
@@ -75,7 +79,7 @@ if(isset($_FILES["image"])){
                         </div>
                          <div class="form-group">
                             <label for="TonKho">Tồn kho</label>
-                            <input id="TonKho"  type="text" name="TonKho"  placeholder="Nhập giá" class="form-control">
+                            <input id="TonKho"  type="text" name="TonKho"  placeholder="Nhập tồn kho" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="Mota">Mô tả</label>

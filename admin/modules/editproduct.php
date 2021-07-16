@@ -1,33 +1,33 @@
 <?php
 include_once 'function.php';
-$sqlSelectCat = "Select * from category";
+$sqlSelectCat = "Select * from subcategory";
 $resultCat = mysqli_query($conn, $sqlSelectCat) or die("Lỗi truy vấn");
 $proname = "";
-$catid = "";
+$scatid = "";
 $price = 0;
 $image = "";
-$sale_off = 0;
+$tonkho = 0;
 $mota = "";
 $status = 0;
 $imgOld ="";
 if(isset($_GET["module"])&&isset($_GET["id"])){
     $id = $_GET["id"];
-    $sqlGetid = "SELECT * FROM product where pro_id = ".$id;
+    $sqlGetid = "SELECT * FROM product where ProductID = ".$id;
     $result = mysqli_query($conn,$sqlGetid);
     $row = mysqli_fetch_row($result);
  
 //echo '<prE>';
 //print_r($row);die;
    
-$proname = $row[1];
-$catid = $row[2];
-$price = $row[3];
-$image = $row[4];
-$sale_off = $row[5];
-$mota = $row[6];
+$proname = $row[2];
+$scatid = $row[1];
+$image = $row[3];
+$mota = $row[4];
+$tonkho = $row[5];
+$price = $row[6];
 $status = $row[7];
 
-$imgOld.=$row[4];
+$imgOld.=$row[3];
 
 }
     
@@ -41,9 +41,9 @@ if (isset($_POST["update"])) {
     // $Status = $_POST["status"] ? $_POST["status"]:0;
     // $sqlUpdate = "UPDATE product SET ProName = '$ProName',id='$Catid',price='$Price',image='$Image',sale_off='$Sale',mota='$Mota',`status`='$Status' WHERE pro_id =".$_GET["id"];
 
-     $table = 'product';
+    $table = 'product';
     $data = $_POST;
-    $data["status"] = ($data["status"])?$data["status"]:0;
+    $data["Status"] = ($data["Status"])?$data["Status"]:0;
     
 $fileName="";
  $path = "../public/Uploads/product/";
@@ -73,8 +73,8 @@ if(isset($_FILES["image"]["name"])){
         $fileName = $imgOld;
     }
     $data["image"] =$fileName; 
-    // Lỗi thêm mớiUPDATE product SET ProName='Phác đồ sơ sinh',id=12',price=10000',image=',sale_off=100000',mota=',status=1' WHERE pro_id=28
-    $condition = "WHERE pro_id=".$_GET["id"];
+
+    $condition = "WHERE ProductID=".$_GET["id"];
     $sqlUpdate = update($table,$data,$condition);
     mysqli_query($conn, $sqlUpdate) or die("Lỗi thêm mới".$sqlUpdate);
     header('Location: index.php?module=listproduct');
@@ -91,26 +91,26 @@ if(isset($_FILES["image"]["name"])){
                 <div class="card-body">
                     <form action="" method="post" id="basicform" data-parsley-validate="">
                         <div class="form-group">
-                            <label for="ProName">Tên sản phẩm</label>
-                            <input id="ProName"  type="text" name="ProName" value="<?php echo $proname; ?>"  placeholder="Nhập tên sản phẩm" class="form-control">
+                            <label for="ProductName">Tên sản phẩm</label>
+                            <input id="ProductName"  type="text" name="ProductName" value="<?php echo $proname; ?>"  placeholder="Nhập tên sản phẩm" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="catId">Loại sản phẩm</label>
-                            <select name="id" id="id" class="form-control">
+                            <label for="SubCategoryID">Loại sản phẩm</label>
+                            <select name="SubCategoryID" id="SubCategoryID" class="form-control">
                                 <option value="">--Chọn loại sản phẩm</option>
                                 <?php while ($rowcat = mysqli_fetch_assoc($resultCat)){
                                     $selected = ""; 
-                                        if ($catid == $rowcat["id"]) {
+                                        if ($scatid == $rowcat["SubCategoryID"]) {
                                             $selected = "selected";
                                         }
                                     ?>
-                                <option <?php echo $selected; ?> value="<?php echo $rowcat["id"]?>"><?php echo  $rowcat["CatName"]?></option>
+                                <option <?php echo $selected; ?> value="<?php echo $rowcat["SubCategoryID"]?>"><?php echo  $rowcat["SubName"]?></option>
                                 <?php }?>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="price">Giá sản phẩm</label>
-                            <input id="price"  type="text" name="price" value="<?php echo $price; ?>" placeholder="Nhập giá" class="form-control">
+                            <label for="Price">Giá sản phẩm</label>
+                            <input id="Price"  type="text" name="Price" value="<?php echo $price; ?>" placeholder="Nhập giá" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="image">Ảnh sản phẩm</label>
@@ -118,16 +118,18 @@ if(isset($_FILES["image"]["name"])){
                             <input id="image"  type="file" name="image"  placeholder="" class="form-control">
                         </div>
                          <div class="form-group">
-                            <label for="sale">Sale off</label>
-                            <input id="sale"  type="text" name="sale_off" value="<?php echo $sale_off; ?>" placeholder="Nhập giá" class="form-control">
+                            <label for="TonKho">Tồn kho</label>
+                            <input id="TonKho"  type="text" name="TonKho" value="<?php echo $tonkho; ?>" placeholder="Nhập tồn kho" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="mota">Mô tả</label>
-                            <textarea cols="60" name="mota" id="mota" ><?php echo $mota; ?></textarea>
+                            <label for="Mota">Mô tả</label>
+                            <textarea cols="60" name="Mota" id="Mota" ><?php echo $mota; ?></textarea>
+                            <script>    CKEDITOR.replace( 'Mota' );</script>
                         </div>
+
                          <div class="form-group">
                                 <label class="be-checkbox custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="status" id="status" value="1" <?php echo ($status)?"checked":""?>><span class="custom-control-label">Trạng thái</span>
+                                    <input type="checkbox" class="custom-control-input" name="Status" id="Status" value="1" <?php echo ($status)?"checked":""?>><span class="custom-control-label">Trạng thái</span>
                                 </label>
                             </div>
                         <div class="row">

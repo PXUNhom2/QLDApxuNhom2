@@ -3,8 +3,8 @@ include 'function.php';
 $catname = "";
 $status = 0;
 if(isset($_GET["module"])&&isset($_GET["id"])&& isset($_GET["sid"])){
-    $id = $_GET["id"];
-    $sqlGetid = "SELECT * FROM subcategory where SubCategoryID = ".$id;
+    $sid = $_GET["sid"];
+    $sqlGetid = "SELECT * FROM subcategory where SubCategoryID = ".$sid;
     $result = mysqli_query($conn,$sqlGetid);
     $row = mysqli_fetch_row($result);
  
@@ -19,7 +19,7 @@ if(isset($_GET["module"])&&isset($_GET["id"])&& isset($_GET["sid"])){
 if (isset($_POST["update"])) {
     $catName = $_POST["CategoryName"];
     $status = ($_POST["Status"])?$_POST["Status"]:0;
-    $sqlUpdate = "UPDATE subcategory SET SubName = '$catName',`Status`= b'$status' WHERE SubCategoryID =".$_GET["id"];
+    $sqlUpdate = "UPDATE subcategory SET SubName = '$catName',`Status`= b'$status' WHERE SubCategoryID =".$_GET["sid"];
     
     // $table = "category";
     // $data = $_POST;
