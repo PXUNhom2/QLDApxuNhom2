@@ -20,7 +20,9 @@
         <!-- ============================================================== -->
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-
+            <button type="button" class="btn btn-primary" style="margin-bottom: 10px;">
+                <a class="" href="index.php?module=listcategory>" style="color: white;">Quay lại</a>
+            </button>
             <button type="button" class="btn btn-primary" style="margin-bottom: 10px;">
                 <a class="" href="index.php?module=addsubcate&id=<?php echo $subid?>" style="color: white;">Thêm mới</a>
             </button>

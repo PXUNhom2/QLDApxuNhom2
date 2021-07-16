@@ -15,10 +15,9 @@
                                     <th>Id</th>
                                     <th>Tên sản phẩm</th>
                                     <th>Loại</th>
-                                    <th>Giá</th>
                                     <th>Image</th>
-                                    <th>Sale off</th>
-                                    <th>Mô tả</th>
+                                    <th>Giá</th>
+                                    <th>Tồn kho</th>
                                     <th>Trạng thái</th>
                                     <th></th>
                                     <th></th>
@@ -35,22 +34,20 @@
                                         ?>
                                         <tr>
                                             <td><?php echo $count ?></td>
-                                            <td><?php echo $row["ProName"] ?></td>
+                                            <td><?php echo $row["ProductName"] ?></td>
                                             <td ><?php
-                                                $sqlSelectCat = "Select * from category where id=".$row["id"];
+                                                $sqlSelectCat = "Select * from subcategory where SubCategoryID=".$row["SubCategoryID"];
                                                 $resultCat = mysqli_query($conn, $sqlSelectCat) or die("Lỗi truy vấn");
                                                 while ($rowcat = mysqli_fetch_assoc($resultCat)){
-                                                    echo  $rowcat["CatName"];
+                                                    echo  $rowcat["SubName"];
                                                 }
                                                 ?></td>
-                                            
-                                            <td><?php echo $row["price"] ?></td>
                                             <td><img style="width: 100px;" src="../public/Uploads/product/<?php echo $row['image']; ?>"></td>
-                                            <td><?php echo $row["sale_off"] ?></td>
-                                            <td><?php echo $row["mota"] ?></td>
-                                            <td><?php echo $row["status"] ? "Hiển thị" : "Ẩn" ?></td>
-                                            <td><a href="index.php?module=editproduct&id=<?php echo $row["pro_id"] ?>">Sửa</a></td>
-                                            <td><a href="index.php?module=deleteproduct&id=<?php echo $row["pro_id"] ?>">Xóa</a></td>
+                                            <td><?php echo $row["Price"] ?></td>
+                                            <td><?php echo $row["TonKho"] ?></td>
+                                            <td><?php echo $row["Status"] ? "Hiển thị" : "Ẩn" ?></td>
+                                            <td><a href="index.php?module=editproduct&id=<?php echo $row["ProductID"] ?>">Sửa</a></td>
+                                            <td><a href="index.php?module=deleteproduct&id=<?php echo $row["ProductID"] ?>">Xóa</a></td>
                                         </tr>
                                     <?php }
                                 }

@@ -38,7 +38,6 @@ if (isset($_POST["addnew"])) {
                             <div class="col-sm-6 pl-0">
                                 <p class="text-right">
                                     <button type="submit" class="btn btn-space btn-primary" name="addnew">Thêm mới</button>
-
                                 </p>
                             </div>
                         </div>
