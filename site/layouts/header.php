@@ -159,7 +159,7 @@
                             <h1 class="pull-left">
                                <!-- Logo nhà sách-->
                                <a href="index.php" class="logo" title="LOGO TIEU DE">
-                                <img src="../libs/images/logonew.png" alt="" title="">
+                                <img src="../libs/images/logonew1.png" alt="" title="">
                             </a>
                         </h1>
                     </div>

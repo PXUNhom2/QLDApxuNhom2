@@ -33,7 +33,7 @@
 	h5 {font-size: 14px;}
 	h6 {font-size: 12px;}
 	p {margin-bottom: 10px;line-height: 24px;}
-	img {border: none;max-width: 100%;height: auto;} 
+	img {border: none;max-width:55%;height: auto;} 
 	a {color: #333333;}
 	a:hover {text-decoration: none;color: #0f9ed8;}
 	a:focus {text-decoration: none;outline: none;}
