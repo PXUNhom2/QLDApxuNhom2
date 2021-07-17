@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-
+include ("../config/connection.php");
 ?>
 <?php require_once ("layouts/header.php")?>
 <?php require_once ("layouts/nav.php")?>

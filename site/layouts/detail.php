@@ -1,6 +1,6 @@
 <?php 
     if(isset($_GET["id"])){
-        $sqlSelect = "SELECT * FROM product WHERE pro_id=".$_GET["id"];
+        $sqlSelect = "SELECT * FROM product WHERE   ProductID=".$_GET["id"];
         $result = mysqli_query($conn,$sqlSelect) or die("Lỗi truy cập".$sqlSelect);
         $rowpro = mysqli_fetch_row($result);
         // echo "<prE>";
@@ -29,18 +29,18 @@
                
                         <div class="sp-large">
                             <a href="" ng-repeat="item in ProductImages" class="ng-scope .sp-current-big">
-                                <img src="../public/Uploads/product/<?php echo $rowpro[4] ?>">
+                                <img src="../public/Uploads/product/<?php echo $rowpro[3] ?>">
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-sm-6 col-xs-12 clearfix">
-                    <h1 class="name m-b-5 ng-binding"><?php echo $rowpro[1]; ?></h1>
+                    <h1 class="name m-b-5 ng-binding"><?php echo $rowpro[2]; ?></h1>
                
                     <div class="product_price p-b-10 ng-scope">
                   
-                        <div class="ng-scope"><ins class="m-b-5 ng-binding" style="    font-size: 24px;font-weight: 300;color: #ff7200;text-decoration: none; display: block;"><?php echo number_format((int)$rowpro[3],0,",","."); ?>đ</ins>
+                        <div class="ng-scope"><ins class="m-b-5 ng-binding" style="    font-size: 24px;font-weight: 300;color: #ff7200;text-decoration: none; display: block;"><?php echo number_format((int)$rowpro[6],0,",","."); ?>đ</ins>
                         </div>
             
                     </div>
@@ -61,11 +61,11 @@
          
                         <div class="button clearfix ng-scope">
                             <div class="col-lg-6 col-sm-6 col-xs-6 col-xxs-12 p-l-0 p-r-xxs-0 m-b-10">
-                                <button id="add-to-cart" style="border: 1px solid #0f9ed8;background: #ffffff;color: #0f9ed8;font-size: 16px;font-weight: 600;height: 45px;line-height: 45px; width: 100%;text-transform: uppercase;" onclick="addCart('<?php echo $rowpro[0]?>')">
+                                <button id="add-to-cart" style="border: 1px solid #f69679;background: #ffffff;color: #f69679;font-size: 16px;font-weight: 600;height: 45px;line-height: 45px; width: 100%;text-transform: uppercase;" onclick="addCart('<?php echo $rowpro[0]?>')">
                                     <i class="glyphicon glyphicon-shopping-cart"></i> Thêm giỏ hàng</button>
                             </div>
                             <div class="col-lg-6 col-sm-6 col-xs-6 col-xxs-12 p-r-0 p-l-xxs-0 m-b-10">
-                                <button id="buy-now" ng-click="addToCardBuy()" style="    background: #0f9ed8;border: 1px solid #0f9ed8;color: #ffffff;font-size: 16px;text-transform: uppercase;height: 45px;line-height: 45px;width: 100%;"><i class="glyphicon glyphicon-ok"></i> Mua ngay</button>
+                                <button id="buy-now" ng-click="addToCardBuy()" style="    background: #f69679;border: 1px solid #f69679;color: #ffffff;font-size: 16px;text-transform: uppercase;height: 45px;line-height: 45px;width: 100%;"><i class="glyphicon glyphicon-ok"></i> Mua ngay</button>
                          </div>
                         </div>
                     
@@ -84,7 +84,7 @@
             <div class="tab-content">
                 <div class="tab-pane fade in ng-scope active" id="tab1" >
                     <div class="container-fluid rte ng-binding" ng>
-                        <p>xxxxxxxxxxxxxxxxx</p>
+                        <p><?php echo $rowpro[4]?></p>
 
                     </div>
                 </div>
