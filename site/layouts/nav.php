@@ -19,7 +19,13 @@
                                             <li class="has-child level0">
                                                 <a class='' href="index.php?view=listproduct&id=<?php echo $row["CategoryID"]?>"><img class='' src='' alt=''> <span><?php echo $row["CategoryName"]?></span></a>
                                                 <ul class="level1">
-                                                    <li class="level1"><a class="" href=""><span>Ngao</span></a></li>
+                                                    <?php 
+                                                    $sqlssSelect = "SELECT * FROM subcategory WHERE CategoryID=".$row["CategoryID"];
+                                $resultss = mysqli_query($conn, $sqlssSelect) or die("Lỗi truy vấn");
+                                                    while($rowss = mysqli_fetch_array($resultss)){
+                                                ?>
+                                                    <li class="level1"><a class="" href=""><span><?php echo $rowss["SubName"]?></span></a></li>
+                                                <?php }?>
                                                 </ul>
                                             </li>
                                            
