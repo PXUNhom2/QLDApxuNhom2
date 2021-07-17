@@ -1,11 +1,11 @@
  <!--footer thôn tin công ty liên hệ-->
-            <div class="footer">
+            <div class="footer" >
                 
                 <script src="../public/app/services/moduleServices.js"></script>
                 <script src="../public/app/controllers/moduleController.js"></script>
-                <footer class="footer-content">
+                <footer class="footer-content"style="background-color: #373639;" >
                     <div class="footer_top">
-                        <div class="container">
+                        <div class="container" >
                             <div class="footer_top_wrap">
                                 <div class="row">
                                     <div class="col-md-3 col-sm-6 col-xs-12">

@@ -105,7 +105,7 @@
 
                         <div class="col-md-12">
                             <ul class="nav navbar-nav topmenu-contact pull-left">
-                                <li><i class="fa fa-phone"></i> <span>Hotline:0772455xxx</span></li>
+                                <li><i class="fa fa-phone"></i> <span>LIÊN HỆ: 0388.441.822</span></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
 
