@@ -38,6 +38,9 @@
             visibility: hidden;
             z-index: -2;
         }
+        .pull-left img{
+            max-width: 55%;
+        }
     </style>
     <!--CSS-->
     <link rel="stylesheet" href="../libs/js/bootstrap/css/bootstrap.min.css">
@@ -46,6 +49,7 @@
 
 
     <!--JS-->
+    
     <script src="../libs/js/plugin42e7.js?v=582"></script>
     <script src="../libs/js/option_selection.js"></script>
     <script src="../libs/js/api.jquery.js"></script>
@@ -170,7 +174,7 @@
                             <div class="search_wrapper">
                                 <input type="text" name="search" class="index_input_search" id="txtsearch" onblur="if(this.value=='')this.value='Nhập từ khóa tìm kiếm...'"
                                 onfocus="if(this.value=='Nhập từ khóa tìm kiếm...')this.value=''" value="Nhập từ kh&#243;a t&#236;m kiếm..." />
-                                <button class="btn_search_submit btn " type="button" id="btnsearch"><span>Tìm ngay</span></button>
+                                <button class="btn_search_submit btn " type="button" id="btnsearch"><b>TÌM NGAY</b></button>
                             </div>
                         </div>
                     </div>

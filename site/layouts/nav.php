@@ -4,7 +4,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-3 col-sm-12 col-xs-12 vertical_menu">
-                                    <div id="mb_verticle_menu" class="menu-quick-select">
+                                    <!-- <div id="mb_verticle_menu" class="menu-quick-select">
                                         <div class="title_block">
                                             <span>Danh mục sản phẩm</span>
                                         </div>
@@ -40,7 +40,7 @@
                                             </li>
                                             </ul class='nav_verticalmenu'>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <nav class="col-md-9 col-sm-12 col-xs-12 p-l-0">
                                     <ul class='menu nav navbar-nav menu_hori'>
