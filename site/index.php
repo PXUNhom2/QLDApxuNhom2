@@ -25,5 +25,35 @@ session_start();
                 </div>
             </div>
 <?php require_once ("layouts/footer.php")?>
+
+<script>
+    function addCart(id){
+        num = $("#num_"+id).val();
+        if(num == undefined){
+            num = 1;
+        }
+        // alert(num);
+        $.post("shoppingcart.php",{'id':id,'num':num}, function(data, status){
+   // alert("Data: " + data + "\nStatus: " + status);
+        item = data.split("-");
+        $("#qty").text(item[0]);
+        $("#total").text(item[1]);
+  });
+};
+    function updateCart(id){
+        num = $("#num_"+id).val();
+        $.post("updatecart.php",{'id':id,'num':num}, function(data)  {
+            $("#listCart").load("index.php?view=shoppingcart #listCart")
+        });      
+    };
+
+    function deleteCart(id){
+        // alert(id);
+         $.post("updatecart.php",{'id':id,'num':0}, function(data)  {
+            $("#listCart").load("index.php?view=shoppingcart #listCart")
+        });      
+    }
+</script>
 <!--Thanh1234pro--!>
+
 

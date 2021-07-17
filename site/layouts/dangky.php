@@ -90,3 +90,7 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+        $(".menu-quick-select ul").hide();
+        $(".menu-quick-select").hover(function () { $(".menu-quick-select ul").show(); }, function () { $(".menu-quick-select ul").hide(); });
+    </script>

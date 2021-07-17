@@ -23,7 +23,7 @@
                                     <ul>
                                         <li>
                                             Mua hàng trực tiếp tại website
-                                            <b class="ng-binding"> http://www.nhasachyduochue.vn</b>
+                                            <b class="ng-binding"> http://www.donghopxu.vn</b>
                                         </li>
                                         <li>
                                             Gọi điện thoại <strong class="ng-binding">

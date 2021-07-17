@@ -82,7 +82,7 @@ if (isset($_COOKIE["username"])&&isset($_COOKIE["password"])) {
     <!-- ============================================================== -->
     <div class="splash-container">
         <div class="card ">
-            <div class="card-header text-center"><a href="#"><img class="logo-img" src="assets/images/logo.png" alt="logo"></a><span class="splash-description">Vui lòng nhập thông tin người dùng</span></div>
+            <div class="card-header text-center"><a href="#"><img class="logo-img" style="width: 150px;" src="assets/images/logon.png" alt="logo"></a><span class="splash-description">Vui lòng nhập thông tin người dùng</span></div>
             <div class="card-body">
 
                 <form method="post">
