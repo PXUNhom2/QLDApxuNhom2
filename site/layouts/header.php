@@ -5,7 +5,7 @@
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta charset="UTF-8" />
-    <title>Tieu de website</title>
+    <title>SHOP TVH</title>
     <meta name="description" />
     <meta name="keywords" />
     <!--hiển thị icon nhỏ web-->
