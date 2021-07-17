@@ -1,6 +1,8 @@
 <div class="dashboard-header">
     <nav class="navbar navbar-expand-lg bg-white fixed-top">
-        <a class="navbar-brand" href="index.php">SHOP TVH</a>
+    <a href="index.php" class="logo" title="LOGO TIEU DE">
+                                <img src="../libs/images/logonew1.png" alt="" title="">
+                            </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
