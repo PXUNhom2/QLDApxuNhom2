@@ -26,7 +26,7 @@ include ("../config/connection.php");
 
          <link href='assets/vendor/full-calendar/css/fullcalendar.css' rel='stylesheet' />
     <link href='assets/vendor/full-calendar/css/fullcalendar.print.css' rel='stylesheet' media='print' />
-        <title>Nhà sách y dược - Admin</title>
+        <title>SHOP TVH - Admin</title>
          <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
     </head>
     <body>
