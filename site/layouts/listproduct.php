@@ -1,14 +1,19 @@
-
+<?php 
+    $sqlCat = "SELECT * FROM subcategory WHERE SubCategoryID=".$_GET["id"];
+    $resultCat = mysqli_query($conn,$sqlCat);
+    $dataCat =  mysqli_fetch_row($resultCat);
+ ?>
+        <?php require_once ("layouts/blogsidebar.php")?> 
         <div class="col-md-9">
             <div class="breadcrumb clearfix">
                 <ul>
-                    <li itemtype="http://shema.org/Breadcrumb" itemscope="" class="home">
-                        <a title="Đến trang chủ" href="/" itemprop="url"><span itemprop="title">Trang chủ</span></a>
+                    <li itemtype="" itemscope="" class="home">
+                        <a title="Đến trang chủ" href="index.php" itemprop="url"><span itemprop="title">Trang chủ</span></a>
                     </li>
-                    <li itemtype="http://shema.org/Breadcrumb" itemscope="" class="category17 icon-li">
+                    <li itemtype="" itemscope="" class="category17 icon-li">
                         <div class="link-site-more">
-                            <a title="" href="/san-pham/nghao-so-oc-33804" itemprop="url">
-                            <span itemprop="title">yyyy</span>
+                            <a title="" href="#" itemprop="url">
+                            <span itemprop="title"><?php echo $dataCat[1];?></span>
                             </a>
                         </div>
                     </li>
@@ -20,7 +25,7 @@
 
             <div class="product-content">
                 <h1 title="products" class="page_heading ">
-                    yyyy
+                    <?php echo $dataCat[1];?>
                 </h1>
                 <div class="sortPagibar m-b-15 clearfix">
                     <div class="pull-left">
@@ -57,22 +62,26 @@
 
             
                 <div class="product_list grid clearfix">
+                         <?php
+        $sqlSelect = "SELECT * FROM product WHERE SubCategoryID=".$_GET["id"];
+        $result = mysqli_query($conn, $sqlSelect) or die("Lỗi truy vấn");
+        while ($row = mysqli_fetch_array($result)) {
+
+            ?>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 product-wrapper zoomIn wow" style="visibility: visible; animation-name: zoomIn;">
                         <div class="product-block product-resize m-b-20 fixheight" style="height: 295px;">
                             <div class="product-image image-resize" style="height: 208px;">
                                 <a href="">
-
-                                <img class="first-img" src="../public/Uploads/product/1830f388d630276e7e21.jpg" alt="">
-                                
+                                <img class="first-img" src="../public/Uploads/product/<?php echo $row["image"] ?>" alt="">
                                 </a>
                                 <div class="product-actions hidden-xs">
-                                    <div class="btn-add-to-cart" onclick="addCart()">
+                                    <div class="btn-add-to-cart" onclick="addCart(<?php echo $row['ProductID']?>)">
                                         <a href="javascript:void(0);">
                                             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                                         </a>
                                     </div>
                                     <div class="btn_quickview">
-                                        <a class="quickview" href="">
+                                        <a class="quickview" href="index.php?view=detail&id=<?php echo $row["ProductID"] ?>">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </div>
@@ -80,14 +89,15 @@
                             </div>
                             <div class="product-info text-center m-t-xxs-20">
                                 <h3 class="pro-name">
-                                    <a href="" title="">xxxx</a>
+                                    <a href="" title=""><?php echo $row["ProductName"] ?></a>
                                 </h3>
                                 <div class="pro-prices">
-                                    <span class="pro-price"><?php ; echo number_format(90000,0,",","."); ?>&nbsp;₫</span>
+                                    <span class="pro-price"><?php $price = (int)$row["Price"] ; echo number_format($price,0,",","."); ?>&nbsp;₫</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
             
             </div>

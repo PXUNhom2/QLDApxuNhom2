@@ -30,29 +30,39 @@
                     </thead>
                     <tbody>
                           
+                        <?php 
+                                        $number = 0;
+                                        $total = 0;
+                                        $subtotal = 0;
+                                        if(isset($_SESSION["cart"])){
+                                             $cart=$_SESSION["cart"];
+                                        foreach ($cart as $key=> $value){
+                                            ?>
                         <tr>
                             <td></td>
-                            <td>xxx</td>
-                            <td><?echo number_format(90000,0,",",".");?></td>
-                            <td>2
-               
-                            </td>
+                            <td><?php echo $value["name"]?></td>
+                            <td><?php $price = (int)$value["price"];echo number_format($price,0,",",".");?></td>
+                            <td><input class="input"  type="number" id="num_<?php echo $key; ?>" value="<?php echo $value["number"]?>" onclick="updateCart(<?php echo $key; ?>)"></td>
                             <td><?php
-                    
-                            echo number_format(90000,0,",",".");
+                            $total = (int)$value["number"]*(int)$value["price"];
+                            $subtotal +=$total;
+                            echo number_format($total,0,",",".");
                             
                             ?></td>
-                            <td><button class="btn" onclick="deleteCart()"><i class="fa fa-close"></i></button></td>
+                            <td><button class="btn" onclick="deleteCart(<?php echo $key; ?>)"><i class="fa fa-close"></i></button></td>
                         </tr>
                        
-                                         
+                                         <?php   
+                                        }
+                                        }
+                                        ?>         
                     </tbody>
                 </table>
                 <div class="clearfix text-right">
                 <span><b>Tổng thanh toán:</b></span>
                 <span class="pay-price ng-binding">
 
-                    <?php echo number_format(90000,0,",",".");?>đ
+                   <?php echo number_format($subtotal,0,",",".");?>đ
                 </span>
                 </div>
             </div>

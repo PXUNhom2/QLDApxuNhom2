@@ -68,7 +68,7 @@ if(isset($_FILES["image"]["name"])){
            }else{
                 echo "File không đúng định dạng";
              }
-             // echo "<prE>";print_r($_FILES);die;
+             //echo "<prE>";print_r($_FILES);die;
     }else{
         $fileName = $imgOld;
     }
