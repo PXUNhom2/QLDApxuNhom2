@@ -14,61 +14,44 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Quản lý danh mục</a>
-                        <div id="submenu-2" class="collapse submenu" style="">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Quản lý cửa hàng</a>
+                        <div id="submenu-2" class="collapse submenu" style="background: white;">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=addcategory">Thêm mới <!--<span class="badge badge-secondary">New</span>--></a>
+                                    <a class="nav-link" href="index.php?module=listcategory">QL Danh mục</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=listcategory">Danh sách</a>
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="index.php?module=listproduct">QL Sản phẩm</a>
                                 </li>
+
+
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>Quản lý sản phẩm</a>
-                        <div id="submenu-3" class="collapse submenu" style="">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=addproduct">Thêm mới</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=listproduct">Danh sách</a>
-                                </li>
-                               
-                            </ul>
-                        </div>
-                    </li>
+                    
                      <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fas fa-meh"></i>Quản lý thành viên</a>
-                        <div id="submenu-4" class="collapse submenu" style="">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fas fa-meh"></i>Quản lý Người dùng</a>
+                        <div id="submenu-4" class="collapse submenu" style="background: white;">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=adduser">Thêm mới</a>
+                                    <a class="nav-link" href="index.php?module=listuser">QL Thành viên</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=listuser">Danh sách</a>
+                                    <a class="nav-link" href="#r">QL Khách hàng</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">QL Phản hồi</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-user"></i>Quản lý khách hàng</a> 
-                         <div id="submenu-5" class="collapse submenu" style="">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=custumer-star">Khách hàng tiềm năng</a>
-                                </li>
-                            </ul>
-                        </div>   
-                    </li>  
+                 
                      <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-dolly"></i>Quản lý đặt hàng</a>  
-                          <div id="submenu-6" class="collapse submenu" style="">
+                          <div id="submenu-6" class="collapse submenu" style="background: white;">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=listorder">Danh sách</a>
+                                    <a class="nav-link" href="index.php?module=listorder">Danh sách đặt hàng</a>
                                 </li>
                             </ul>
                         </div>  

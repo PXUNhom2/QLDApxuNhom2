@@ -11,7 +11,6 @@ include ("../config/connection.php");
             <div class="main">
                 <div class="container">
                 	<div class="row">
-                	<?php require_once ("layouts/blogsidebar.php")?> 
                 	 <?php
                     if (isset($_GET["view"])) {
                         $module = $_GET["view"];
