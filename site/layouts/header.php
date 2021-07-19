@@ -182,12 +182,22 @@
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                         <!-- Cart -->
                         <div class="cart_header">
-                        
+                            <?php 
+                            $number = 0;
+                            $total = 0;
+                            if(isset($_SESSION["cart"])){
+                               $cart=$_SESSION["cart"];
+                               foreach ($cart as $value){
+                                $number += (int)$value["number"];
+                                $total += (int)$value["number"]*(int)$value["price"];
+                            }
+                        }
+                        ?>
                         <a href="index.php?view=shoppingcart" title="Giỏ hàng">
                             <span class="cart_header_icon"></span>
                             <span class="box_text">
-                                <strong class="cart_header_count">Giỏ hàng (<span id="qty">2</span>)</strong>
-                                <span class="cart_price" id="total"><?php echo number_format(90000,0,",",".");?>₫</span>
+                                <strong class="cart_header_count">Giỏ hàng (<span id="qty"><?php echo $number;?></span>)</strong>
+                                <span class="cart_price" id="total"><?php echo number_format($total,0,",",".");?>₫</span>
                             </span>
                         </a>
                         <div class="cart_clone_box">

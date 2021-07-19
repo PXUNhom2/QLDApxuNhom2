@@ -6,30 +6,30 @@ if(isset($_POST["id"])){
 //    echo "ok";
     $id = $_POST["id"];
     $num = $_POST["num"];
-    $sqlPro = "SELECT * FROM product WHERE pro_id = ".$_POST["id"];
+    $sqlPro = "SELECT * FROM product WHERE ProductID = ".$_POST["id"];
     $result = mysqli_query($conn, $sqlPro);
     $row = mysqli_fetch_row($result);
     
     if(!isset($_SESSION["cart"])){
         $cart[$id] = array(
-            'name'=>$row[1],
-            'image'=>$row[4],
-            'price'=>$row[3],
+            'name'=>$row[2],
+            'image'=>$row[3],
+            'price'=>$row[6],
             'number'=>$num
         ); 
     }else{
          $cart=$_SESSION["cart"];
          if(array_key_exists($id, $cart)){
         $cart[$id] = array(
-            'name'=>$row[1],
-            'image'=>$row[4],
-            'price'=>$row[3],
+            'name'=>$row[2],
+            'image'=>$row[3],
+            'price'=>$row[6],
          'number'=>(int)$cart[$id]['number']+$num);
          } else {
                $cart[$id] = array(
-            'name'=>$row[1],
-            'image'=>$row[4],
-            'price'=>$row[3],
+            'name'=>$row[2],
+            'image'=>$row[3],
+            'price'=>$row[6],
             'number'=>$num);
          }
     };

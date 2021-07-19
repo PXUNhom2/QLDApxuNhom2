@@ -10,8 +10,6 @@ if (isset($_POST["addnew"])) {
     $data = $_POST;
     $data["Status"] = ($data["Status"])?$data["Status"]:0;
     
-
-    //xu ly image
 $fileName="";
  $path = "../public/Uploads/product/";
 if(isset($_FILES["image"])){
@@ -37,12 +35,30 @@ if(isset($_FILES["image"])){
              }
              // echo "<prE>";print_r($_FILES);die;
     }
-    $data["image"] =$fileName;
-
-
+    $data["image"] =$fileName; 
     $sqlInsert = save($table,$data);
+    // echo "<prE>";
+    //  print_r($sqlInsert);die;
     mysqli_query($conn, $sqlInsert) or die("Lỗi thêm mới".$sqlInsert);
     header('Location: index.php?module=listproduct');
+    
+    // $data["image"] =$fileName;
+   
+    // $sudcatid = $_POST["SubCategoryID"];
+    // $proname = $_POST["ProductName"];
+    // $imagepro =  $data["image"];
+    // $mota = $_POST["Mota"];
+    // $price = $_POST["Price"];
+    // $tonkho = $_POST["TonKho"];
+    // $status = ($_POST["Status"]) ? $_POST["Status"] : 0;
+    
+
+    // $sqlInsert = "INSERT INTO `product`( `SubCategoryID`, `ProductName`, `image`, `Mota`, `TonKho`, `Price`, `Status`) 
+    // VALUES ('$sudcatid','$proname','$imagepro','$mota','$tonkho','$price','$status')";
+    // echo "<prE>";
+    // print_r($sqlInsert);die;
+    // mysqli_query($conn, $sqlInsert) or die("Lỗi thêm mới".$sqlInsert);
+    // header('Location: index.php?module=listproduct');
 }
 ?>
 <div class="container-fluid  dashboard-content">
