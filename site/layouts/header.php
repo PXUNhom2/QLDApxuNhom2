@@ -264,10 +264,10 @@
                                     </div>
                                     <div class="content_menu">
                                         <ul>
-                                            <li class="level0"><a class='' href='trang-chu.html'><span>Trang chủ</span></a></li>
-                                            <li class="level0"><a class='' href='gioi-thieu.html'><span>Giới thiệu</span></a></li>
-                                            <li class="level0"><a class='' href='san-pham.html'><span>Sản phẩm</span></a></li>
-                                            <li class="level0"><a class='' href='lien-he.html'><span>Liên hệ</span></a></li>
+                                            <li class="level0"><a class='' href='index.php'><span>Trang chủ</span></a></li>
+                                            <li class="level0"><a class='' href='gioithieu.php'><span>Giới thiệu</span></a></li>
+                                            <li class="level0"><a class='' href='chinhsach'><span>Chính sách</span></a></li>
+                                            <li class="level0"><a class='' href='huongdan.php'><span>Hướng dẫn mua hàng</span></a></li>
                                         </ul>
                                     </div>
                                 </div>

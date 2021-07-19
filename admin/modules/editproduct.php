@@ -1,6 +1,6 @@
 <?php
 include_once 'function.php';
-$sqlSelectCat = "Select * from subcategory";
+$sqlSelectCat = "Select * from subcategory ";
 $resultCat = mysqli_query($conn, $sqlSelectCat) or die("Lỗi truy vấn");
 $proname = "";
 $scatid = "";

@@ -3,7 +3,7 @@
 <!--Thay đội nội dụng ở đây-->
 
 
-<div class="col-md-9">
+<div class="col-md-12">
     <div class="product_home">
         <div class="clearfix">
             <div class="section-heading">
