@@ -100,7 +100,7 @@ if(isset($_FILES["image"])){
                         <div class="form-group">
                             <label for="Mota">Mô tả</label>
                             <textarea cols="60" name="Mota" id="Mota"></textarea>
-                            <script>    CKEDITOR.replace( 'Mota' );</script>
+                            <script>CKEDITOR.replace( 'Mota' );</script>
                         </div>
                          <div class="form-group">
                                 <label class="be-checkbox custom-control custom-checkbox">

@@ -285,7 +285,7 @@
                                 <div class="pull-right mobile-menu-icon-wrapper">
                                     <!-- Logo mobile -->
                                     <div class="logo logo-mobile">
-                                        <a href="index.php" title="NHÀ SÁCH Y DƯỢC">
+                                        <a href="index.php" title="Shop TVH">
                                             <img src="../libs/images/logo.png" alt="">
                                         </a>
                                     </div>
