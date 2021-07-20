@@ -1,4 +1,44 @@
+<?php 
+ob_start();
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+$error ="";
+include ("../config/connection.php");
+if(isset($_POST["login"])){
+//
+//        echo '<pre>';
+//        print_r($_POST);die;
+        
+   $username = $_POST["account"];
+   $password = $_POST["password"];
 
+
+   
+   $sqlLogin = "SELECT * FROM `customer` WHERE `Username`='$username' AND `Password`='$password'";
+   $result = mysqli_query($conn,$sqlLogin);
+   $row = mysqli_fetch_row($result);
+       // echo '<pre>';
+       // print_r($row);die;
+         // if (count($row)){
+         //     $_SESSION["login"]= $row;
+         //     header("location: index.php");  
+         // }
+   $count = mysqli_num_rows($result);
+   
+   if($count == 1) {
+
+    $_SESSION["account"]= $row;
+    header("location: index.php");  
+}else {
+   $error = "Tài khoản hoặc mật khẩu không đúng";
+}
+}
+
+
+
+?>
     <div class="col-md-3">
         <div class="menu-account">
             <h3>
@@ -46,7 +86,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-8">
-                              <div style = "font-size:11px; color:#cc0000; margin-top:10px"></div>
+                              <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
                             <button type="submit" class="btn btn-primary" name="login" id="login">Đăng nhập</button>
                             <a href="">Quên mật khẩu?</a>
                         </div>

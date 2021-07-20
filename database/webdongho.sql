@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 17, 2021 lúc 10:30 AM
+-- Thời gian đã tạo: Th7 20, 2021 lúc 08:59 AM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 8.0.2
 
@@ -103,6 +103,13 @@ CREATE TABLE `customer` (
   `Status` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Đang đổ dữ liệu cho bảng `customer`
+--
+
+INSERT INTO `customer` (`CustomerID`, `Username`, `Password`, `Fullname`, `Email`, `Phone`, `Address`, `CreateDate`, `Status`) VALUES
+(1, 'tanphu123', 'qqq111', 'Doan Tan Phu', 'doantanphu@gmail.com', '0772455555', 'Hue', '2021-07-20 13:07:10', b'1');
+
 -- --------------------------------------------------------
 
 --
@@ -141,7 +148,8 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`MemberID`, `Username`, `Password`, `Fullname`, `Email`, `Phone`, `Address`, `CreateDate`, `RoleID`, `Status`) VALUES
-(1, 'admin', 'admin', NULL, NULL, NULL, NULL, NULL, 1, b'1');
+(1, 'admin', 'admin', NULL, NULL, NULL, NULL, NULL, 1, b'1'),
+(3, 'sellerso1', 'qqq111', 'Le A', 'seller2@gmail.com', '0772458888', 'Hue', '2021-07-19 15:05:47', 2, b'1');
 
 -- --------------------------------------------------------
 
@@ -154,7 +162,7 @@ CREATE TABLE `product` (
   `SubCategoryID` int(11) NOT NULL,
   `ProductName` varchar(100) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `Mota` varchar(255) DEFAULT NULL,
+  `Mota` text DEFAULT NULL,
   `TonKho` int(11) DEFAULT NULL,
   `Price` int(11) NOT NULL,
   `Status` bit(1) NOT NULL
@@ -165,7 +173,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`ProductID`, `SubCategoryID`, `ProductName`, `image`, `Mota`, `TonKho`, `Price`, `Status`) VALUES
-(2, 9, 'tét222', 'intro.png', '<p>jijidđdddddddd</p>\r\n', 50, 800000, b'1');
+(2, 10, 'tét222', 'intro.png', '<p>jijidđdddddddd</p>\r\n', 50, 800000, b'1'),
+(9, 9, 'dong ho rolexdđddđ', '1830f388d630276e7e21.jpg', '<p>dddđ</p>\r\n', 50, 800000, b'1'),
+(10, 10, 'dong ho rolexdđ', 'logonew1.png', '<p>đ</p>\r\n', 50, 800000, b'1');
 
 -- --------------------------------------------------------
 
@@ -185,7 +195,8 @@ CREATE TABLE `role` (
 
 INSERT INTO `role` (`RoleID`, `RoleName`, `Status`) VALUES
 (1, 'administrator', b'1'),
-(2, 'Manager', b'1');
+(2, 'Manager', b'1'),
+(3, 'CTV', b'1');
 
 -- --------------------------------------------------------
 
@@ -205,7 +216,8 @@ CREATE TABLE `subcategory` (
 --
 
 INSERT INTO `subcategory` (`SubCategoryID`, `SubName`, `CategoryID`, `Status`) VALUES
-(9, 'test', 2, b'1');
+(9, 'test', 2, b'1'),
+(10, 'test222', 4, b'1');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -296,7 +308,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT cho bảng `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `feedback`
@@ -308,25 +320,25 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT cho bảng `member`
 --
 ALTER TABLE `member`
-  MODIFY `MemberID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `MemberID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `role`
 --
 ALTER TABLE `role`
-  MODIFY `RoleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `RoleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `subcategory`
 --
 ALTER TABLE `subcategory`
-  MODIFY `SubCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `SubCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

@@ -14,12 +14,12 @@
    <script src="../app/controllers/orderController.js"></script>
    <form class="" id=""  method="post">
       <div class="col-md-4 col-sm-12 col-xs-12 payment-step step2">
-         <h4  style="margin-top: 0;padding: 10px;background-color: #0f9ed8;font-size: 14px;text-transform: uppercase;color: #ffffff;margin-bottom: 0;">1. Địa chỉ thanh toán và giao hàng</h4>
+         <h4  style="margin-top: 0;padding: 10px;background-color: #f69679;font-size: 14px;text-transform: uppercase;color: #ffffff;margin-bottom: 0;">1. Địa chỉ thanh toán và giao hàng</h4>
          <div class="step-preview clearfix">
             <h2 style="font-weight:normal;
                font-size:16px;
                margin-bottom:5px;
-               color:#0f9ed8;" class="title">Thông tin thanh toán</h2>
+               color:#f69679;" class="title">Thông tin thanh toán</h2>
             <!-- ngIf: CustomerId>0 -->
             <!-- ngIf: CustomerId<=0 -->
             <div class="form-block form-group" ng-if="CustomerId<=0">
@@ -41,12 +41,12 @@
          </div>
       </div>
       <div class="col-md-4 col-sm-12 col-xs-12 payment-step step3">
-         <h4 style="margin-top: 0;padding: 10px;background-color: #0f9ed8;font-size: 14px;text-transform: uppercase;color: #ffffff;margin-bottom: 0;">2. Thanh toán và vận chuyển</h4>
+         <h4 style="margin-top: 0;padding: 10px;background-color: #f69679;font-size: 14px;text-transform: uppercase;color: #ffffff;margin-bottom: 0;">2. Thanh toán và vận chuyển</h4>
          <div class="step-preview clearfix">
             <h2 class="title" style="font-weight:normal;
                font-size:16px;
                margin-bottom:5px;
-               color:#0f9ed8;">Vận chuyển</h2>
+               color:#f69679;">Vận chuyển</h2>
             <div class="form-group ">
                <select class="form-control ng-pristine ng-valid ng-touched" ng-model="ShippingRateId" ng-options="item.Id as item.Name for item in ShippingRates" ng-change="changeShippingRate()">
                   <option value="?" selected="selected"></option>
@@ -55,12 +55,12 @@
             <h2 class="title" style="font-weight:normal;
                font-size:16px;
                margin-bottom:5px;
-               color:#0f9ed8;">Thanh toán</h2>
+               color:#f69679;">Thanh toán</h2>
             <!-- ngRepeat: item in PaymentMethods -->
          </div>
       </div>
       <div class="col-md-4 col-sm-12 col-xs-12 payment-step step1">
-         <h4  style="margin-top: 0;padding: 10px;background-color: #0f9ed8;font-size: 14px;text-transform: uppercase;color: #ffffff;margin-bottom: 0;">3. Thông tin đơn hàng</h4>
+         <h4  style="margin-top: 0;padding: 10px;background-color: #f69679;font-size: 14px;text-transform: uppercase;color: #ffffff;margin-bottom: 0;">3. Thông tin đơn hàng</h4>
          <div class="step-preview">
             <div class="cart-info">
                <div class="cart-items">
