@@ -224,9 +224,9 @@
                                         <div class="box_text">
                                             <strong>
                                                 <?php 
-                                            if(isset($_SESSION["login"])){
+                                            if(isset($_SESSION["account"])){
                                                 
-                                                echo $_SESSION["login"][1];
+                                                echo $_SESSION["account"][1];
                                             }?> 
                                             </strong>
                                          
@@ -234,7 +234,7 @@
                                         </div>
                                         <div class="user_box">
                                             <?php 
-                                            if(isset($_SESSION["login"])){
+                                            if(isset($_SESSION["account"])){
                                                 ?>
                                                 <ul>
                                                 <li><a href="index.php">Cài đặt</a></li>
@@ -244,7 +244,7 @@
                                             <ul>
                                                 <li><a href="index.php?view=dangnhap">Đăng nhập</a></li>
                                                 <li><a href="index.php?view=dangky">Đăng ký</a></li>
-                                            </ul><<?php } ?>
+                                            </ul><?php } ?>
                                         </div>
                                     </div>
                                     <!-- End account -->

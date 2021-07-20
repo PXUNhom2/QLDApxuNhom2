@@ -1,3 +1,78 @@
+<?php
+
+$passErr="";
+$accErr="";
+$emailErr="";
+$repassErr="";
+if (isset($_POST["submit"])) {
+	
+	$phone = $_POST["phone"];
+	$address = $_POST["address"];
+	date_default_timezone_set('Asia/Ho_Chi_Minh');
+    $createdate = date('Y-m-d H:i:s');
+  			if (isset($_POST['fullname'])) {
+                $fullname = $_POST["fullname"];
+            }
+            //user
+            if (empty($_POST["account"])) {
+               $accErr = "account không có bạn ơi";
+            } else {
+            	 $account = $_POST["account"];
+                if (!preg_match("/^[a-zA-Z ]*$/", $_POST["account"]) ){
+                     $accErr = "account không hợp bạn ơi";
+                } else {
+                    $account = $_POST["account"];
+                }
+            }
+            //pass
+            if (empty($_POST["password"])) {
+                $passErr = "Không được để pass rỗng";
+            } else 
+           
+            {
+            	$password = $_POST["password"];
+
+                $lowercase = preg_match("#[a-z]+#",$password);
+                $number = preg_match("#[0-9]+#", $_POST["password"]);
+
+                if (!$lowercase || !$number ||  strlen($_POST["password"]) < '8') {
+                    $passErr = "Pass không hợp bạn ơi";
+                } else 
+
+                {
+                    $password = $_POST["password"];
+                }
+                }
+            
+             //pass
+            if (empty($_POST["repassword"])) {
+                $passErr = "Không được để pass rỗng";
+            } else {
+               $repassword = $_POST["repassword"];
+                if (empty($passErr)&&($_POST["password"]!= $repassword)) {
+                    $passErr = "Pass nhập lại không khớp";
+                } 
+            }
+            //email
+            if (empty($_POST["email"])) {
+                 $emailErr = "Không được để email rỗng";
+            } else {
+                if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+                     $emailErr = "Email không hợp bạn ơi";
+                } else {
+                   	$email = $_POST["email"];
+
+                }
+            }
+    
+    $sqlInsert = "INSERT INTO `customer`(`Username`, `Password`, `Fullname`, `Email`, `Phone`, `Address`, `CreateDate`, `Status`) VALUES ('$account','$password','$fullname','$email','$phone','$address','$createdate',1)";
+    // echo "<prE>";
+    // print_r($sqlInsert);die;
+    mysqli_query($conn, $sqlInsert) or die("Lỗi thêm mới".$sqlInsert);
+    header('Location: index.php?view=dangnhap');
+
+}
+?>
 
 <div class="col-md-3">
 	<div class="menu-account">
@@ -36,29 +111,22 @@
 					<label for="Code" class="col-sm-3 control-label">Tài khoản<span class="warning">(*)</span></label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-model="Code" required="true" name="account" id="account">
-						<span class="error"></span>
+						<span class="error"> <?php echo $accErr;?></span>
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="Email" class="col-sm-3 control-label">Email<span class="warning">(*)</span></label>
-					<div class="col-sm-9">
-						<input type="email" class="form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" ng-model="Email" required="true" id="email" name="email">
-												<span class="error"></span>
-
-					</div>
-				</div>
+				
 				<div class="form-group">
 					<label for="Password" class="col-sm-3 control-label">Mật khẩu<span class="warning">(*)</span></label>
 					<div class="col-sm-9">
 						<input type="password" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-model="Password" required="true" id="password" name="password">
-						<span class="error"></span>
+						<span class="error"><?php echo $passErr;?></span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="RePassword" class="col-sm-3 control-label">Nhập lại mật khẩu<span class="warning">(*)</span></label>
 					<div class="col-sm-9">
 						<input type="password" class="form-control ng-pristine ng-untouched ng-valid" ng-model="RePassword" id="repassword" name="repassword">
-						<span class="error"></span>
+						<span class="error"><?php echo $repassErr;?></span>
 					</div>
 				</div>
 				<h2>Thông tin cá nhân</h2>
@@ -66,6 +134,14 @@
 					<label for="Name" class="col-sm-3 control-label">Họ tên<span class="warning">(*)</span></label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-model="Name" required="true" id="fullname" name="fullname">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="Email" class="col-sm-3 control-label">Email<span class="warning">(*)</span></label>
+					<div class="col-sm-9">
+						<input type="email" class="form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" ng-model="Email" required="true" id="email" name="email">
+												<span class="error"> <?php echo $emailErr;?></span>
+
 					</div>
 				</div>
 				<div class="form-group">
@@ -90,7 +166,8 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-        $(".menu-quick-select ul").hide();
-        $(".menu-quick-select").hover(function () { $(".menu-quick-select ul").show(); }, function () { $(".menu-quick-select ul").hide(); });
-    </script>
+
+<!-- <script type="text/javascript">
+	$(".menu-quick-select ul").hide();
+	$(".menu-quick-select").hover(function () { $(".menu-quick-select ul").show(); }, function () { $(".menu-quick-select ul").hide(); });
+</script> -->
