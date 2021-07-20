@@ -15,7 +15,7 @@ $fileName="";
 if(isset($_FILES["image"])){
    
  if ($_FILES["image"]["type"]=="image/jpeg"||$_FILES["image"]["type"]=="image/jpg"||$_FILES["image"]["type"]=="image/png"||$_FILES["image"]["type"]=="image/gif") {
-  if ($_FILES["image"]["size"]<120000) {
+  if ($_FILES["image"]["size"]<120000000) {
                 # code...
                      if ($_FILES["image"]["error"]==0) {
                         //đưa file ở đây
