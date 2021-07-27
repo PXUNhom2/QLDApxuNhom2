@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 20, 2021 lúc 12:08 PM
--- Phiên bản máy phục vụ: 10.4.18-MariaDB
--- Phiên bản PHP: 8.0.3
+-- Thời gian đã tạo: Th7 27, 2021 lúc 10:47 AM
+-- Phiên bản máy phục vụ: 10.4.17-MariaDB
+-- Phiên bản PHP: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,11 +43,22 @@ CREATE TABLE `action` (
 CREATE TABLE `bill` (
   `OrderID` int(11) NOT NULL,
   `CustomerID` int(11) NOT NULL,
+  `Fullname` varchar(50) CHARACTER SET utf8 NOT NULL,
   `Address` varchar(255) NOT NULL,
   `Phone` varchar(20) NOT NULL,
   `Email` varchar(255) NOT NULL,
-  `Status` bit(1) NOT NULL
+  `Status` tinyint(1) NOT NULL,
+  `DateCreate` datetime NOT NULL,
+  `paymentID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `bill`
+--
+
+INSERT INTO `bill` (`OrderID`, `CustomerID`, `Fullname`, `Address`, `Phone`, `Email`, `Status`, `DateCreate`, `paymentID`) VALUES
+(1, 0, 'anh vu', 'hue', '7755454', 'vuee@gmail.com', 1, '2021-07-27 15:29:34', 1),
+(2, 0, 'anh vudđ', 'hue', '77555454', 'vueddde@gmail.com', 1, '2021-07-27 15:41:28', 1);
 
 -- --------------------------------------------------------
 
@@ -62,6 +73,18 @@ CREATE TABLE `bill_detail` (
   `Quatity` int(11) NOT NULL,
   `Discount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `bill_detail`
+--
+
+INSERT INTO `bill_detail` (`OrderID`, `ProductID`, `Price`, `Quatity`, `Discount`) VALUES
+(1, 12, 1, 450000, 0),
+(1, 26, 1, 450000, 0),
+(1, 38, 1, 1290000, 0),
+(2, 26, 2, 450000, 0),
+(2, 27, 1, 450000, 0),
+(2, 28, 3, 999000, 0);
 
 -- --------------------------------------------------------
 
@@ -151,6 +174,27 @@ INSERT INTO `member` (`MemberID`, `Username`, `Password`, `Fullname`, `Email`, `
 (3, 'sellerso1', 'qqq111', 'Le A', 'seller2@gmail.com', '0772458888', 'Hue', '2021-07-19 15:05:47', 2, b'1'),
 (4, 'thanh1234pro', '101101', 'Nguyễn Văn Thạnh', 'thanh1234pro@gmail.com', '0983087375', '7/46 Nguyễn Hữu Cảnh, 7/46 Nguyễn Hữu Cảnh', '2021-07-20 14:44:00', 2, b'1'),
 (5, 'tanphu', '2001', 'Trần Tấn Phú', 'tanphu@gmail.com', '0398250635', 'Huế', '2021-07-20 14:45:05', 2, b'1');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `payment`
+--
+
+CREATE TABLE `payment` (
+  `paymentID` int(11) NOT NULL,
+  `paymentName` varchar(50) NOT NULL,
+  `status` bit(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `payment`
+--
+
+INSERT INTO `payment` (`paymentID`, `paymentName`, `status`) VALUES
+(1, 'COD', b'1'),
+(2, 'Momo', b'1'),
+(3, 'Bank', b'1');
 
 -- --------------------------------------------------------
 
@@ -248,7 +292,7 @@ ALTER TABLE `action`
 --
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`OrderID`),
-  ADD KEY `CustomerID` (`CustomerID`);
+  ADD KEY `paymentID` (`paymentID`);
 
 --
 -- Chỉ mục cho bảng `bill_detail`
@@ -283,6 +327,12 @@ ALTER TABLE `member`
   ADD KEY `RoleID` (`RoleID`);
 
 --
+-- Chỉ mục cho bảng `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`paymentID`);
+
+--
 -- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
@@ -313,6 +363,12 @@ ALTER TABLE `action`
   MODIFY `actionID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT cho bảng `bill`
+--
+ALTER TABLE `bill`
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
@@ -335,6 +391,12 @@ ALTER TABLE `feedback`
 --
 ALTER TABLE `member`
   MODIFY `MemberID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT cho bảng `payment`
+--
+ALTER TABLE `payment`
+  MODIFY `paymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `product`
@@ -362,7 +424,7 @@ ALTER TABLE `subcategory`
 -- Các ràng buộc cho bảng `bill`
 --
 ALTER TABLE `bill`
-  ADD CONSTRAINT `fk_customerid` FOREIGN KEY (`CustomerID`) REFERENCES `customer` (`CustomerID`);
+  ADD CONSTRAINT `fk_paymentid` FOREIGN KEY (`paymentID`) REFERENCES `payment` (`paymentID`);
 
 --
 -- Các ràng buộc cho bảng `bill_detail`
