@@ -23,6 +23,7 @@ include ("../config/connection.php");
         <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
         <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
         <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/DataTables/datatables.min.css"/>
 
          <link href='assets/vendor/full-calendar/css/fullcalendar.css' rel='stylesheet' />
     <link href='assets/vendor/full-calendar/css/fullcalendar.print.css' rel='stylesheet' media='print' />
@@ -79,8 +80,14 @@ include ("../config/connection.php");
     <script src='assets/vendor/full-calendar/js/jquery-ui.min.js'></script>
     <script src='assets/vendor/full-calendar/js/calendar.js'></script>
    
+    <script type="text/javascript" src="assets/DataTables/datatables.min.js"></script>
 
-    
+    <!-- code cho datatable xu ly phan phan trang tich thu vien datatables-->
+    <script>
+    $(document).ready( function () {
+    $('#table_id').DataTable();
+    } );
+    </script>
     </body>
 
 </html>

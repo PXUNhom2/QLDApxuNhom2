@@ -34,7 +34,7 @@
                 </h5>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered first">
+                        <table id="table_id" class="table table-striped table-bordered first">
                             <thead>
                                 <tr>
                                     <th>#</th>

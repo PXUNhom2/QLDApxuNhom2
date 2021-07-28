@@ -42,6 +42,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">QL Phản hồi</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?module=listcontact">Danh sách liên hệ</a>
+                                </li>
                             </ul>
                         </div>
                     </li>

@@ -45,11 +45,7 @@
             
                     </div>
        
-                    <!-- <div class="product-code p-b-10 ng-binding">Mã SP: SKU-0</div>
-                    <div class="des p-b-10 ng-binding">
-                        <p>xxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    </div> -->
-
+        
                     <div id="add-item-form" class="variants clearfix m-b-10 p-b-10">
               
                         <div class="clearfix product_quantity m-t-10 m-b-20">
@@ -91,10 +87,47 @@
      
             </div>
         </div>
-    
+        
+        <div class="product-content product-other">
+   <h1 title="products" class="page_heading ">
+      Sản phẩm liên quan
+   </h1>
+   <div class="product_list grid clearfix">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product-wrapper zoomIn wow" style="visibility: visible; animation-name: zoomIn;">
+         <div class="product-block product-resize m-b-20 fixheight" style="height: 295px;">
+            <div class="product-image image-resize" style="height: 208px;">
+               <div class="sold-out">Hot</div>
+               <a href="/san-pham/ hau-sua.html">
+               <img class="first-img" src="/Uploads/shop2005/images/product/hau-sua-1_master.jpg" alt="Hàu sữa">
+               </a>
+               <div class="product-actions hidden-xs">
+                  <div class="btn-add-to-cart" onclick="AddToCard(46475,1)">
+                     <a href="javascript:void(0);"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                  </div>
+                  <div class="btn_quickview">
+                     <a class="quickview" href="/san-pham/ hau-sua.html"><i class="fa fa-eye"></i></a>
+                  </div>
+               </div>
+            </div>
+            <div class="product-info text-center m-t-xxs-20">
+               <h3 class="pro-name">
+                  <a href="/san-pham/hau-sua.html" title="Hàu sữa">Hàu sữa</a>
+               </h3>
+               <div class="pro-prices">
+                  <span class="pro-price">120.000&nbsp;₫</span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
     </div>
 </div>
+<?php require_once ("layouts/blogsidebar.php")?> 
 <script type="text/javascript">
         $(".menu-quick-select ul").hide();
         $(".menu-quick-select").hover(function () { $(".menu-quick-select ul").show(); }, function () { $(".menu-quick-select ul").hide(); });
-    </script>
+</script>
+
+
+
