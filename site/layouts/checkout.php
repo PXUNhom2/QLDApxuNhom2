@@ -38,11 +38,11 @@
           foreach ($_SESSION["cart"] as $key => $value) {
                 $quantity = $value["number"];
                 $price = $value["price"];
-                    $sqlInsertOrderDetail = "INSERT INTO `bill_detail`(`OrderID`, `ProductID`, `Price`, `Quatity`, `Discount`) VALUES ('$last_id','$key','$quantity','$price','0')";
+                    $sqlInsertOrderDetail = "INSERT INTO `bill_detail`(`OrderID`, `ProductID`, `Price`, `Quatity`, `Discount`) VALUES ('$last_id','$key','$price','$quantity','0')";
                     mysqli_query($conn,$sqlInsertOrderDetail)or die("Lỗi thêm mới".$sqlInsertOrderDetail);
                 }
 
-                  session_destroy(); 
+                  unset($_SESSION["cart"]);
                  header("location: index.php?view=congratulation");
 
    } ?>

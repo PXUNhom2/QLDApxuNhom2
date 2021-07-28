@@ -2,7 +2,7 @@
 <?php
 if(isset($_GET["module"])&&isset($_GET["id"])){
     $id = $_GET["id"];
-    $sqlGetid = "SELECT * FROM order_shop where order_id = ".$id;
+    $sqlGetid = "SELECT * FROM bill where OrderID = ".$id;
     $result = mysqli_query($conn,$sqlGetid);
     $row = mysqli_fetch_row($result);
 
@@ -10,21 +10,13 @@ if(isset($_GET["module"])&&isset($_GET["id"])){
 // print_r($row);die;
 
     $orderid=$row[0];
-    $name = $row[1];
-    $email = $row[2];
-    $phone = $row[3];
-    $address = $row[6];
-    $created = $row[4];
+    $name = $row[2];
+    $email = $row[5];
+    $phone = $row[4];
+    $address = $row[3];
+    $created = $row[7];
 }
 
-if (isset($_POST["xacnhan"])) {
-    $catName = $_POST["CatName"];
-    $status = $_POST["Status"] ? $_POST["Status"]:0;
-    // $sqlUpdate = "UPDATE category SET CatName = '$catName',`Status`='$status' WHERE id =".$_GET["id"];
-    
-    mysqli_query($conn, $sqlUpdate) or die("Lỗi thêm mới");
-    header('Location: index.php?module=listcategory');
-}
 ?>
 <div class="container-fluid  dashboard-content">
     <div class="row">
@@ -40,9 +32,9 @@ if (isset($_POST["xacnhan"])) {
                     <div class="row mb-4">
                         <div class="col-sm-6">
                             <h5 class="mb-3">Người gửi:</h5>                                            
-                            <h3 class="text-dark mb-1">NHÀ SÁCH Y DƯỢC</h3>
-                            <div>Địa chỉ: 17/3 XUÂN THỦY, P.VỸ DẠ, TP.HUẾ</div>
-                            <div>Email: nhasachyduochue@nsyd.vn</div>
+                            <h3 class="text-dark mb-1">SHOP TVH</h3>
+                            <div>Địa chỉ: 176 Trần Phú, Huế</div>
+                            <div>Email: shoptvh@bussines.vn</div>
                             <div>Phone: +573-282-9117</div>
                         </div>
                         <div class="col-sm-6">
@@ -68,7 +60,7 @@ if (isset($_POST["xacnhan"])) {
                                 <?php
                                 $total = 0;
                                 $subtotal = 0;
-                                $sqlSelect = "SELECT * FROM order_detail WHERE order_id=".$orderid;
+                                $sqlSelect = "SELECT * FROM bill_detail WHERE OrderID=".$orderid;
                                 $result = mysqli_query($conn, $sqlSelect) or die("Lỗi truy vấn");
                                 if (mysqli_num_rows($result) > 0) {
                                     $count = 0;
@@ -80,17 +72,17 @@ if (isset($_POST["xacnhan"])) {
                                             <td class="left">
 
                                                 <?php
-                                                $sqlSelectCat = "SELECT * from product where pro_id=".$row["product_id"];
+                                                $sqlSelectCat = "SELECT * from product where ProductID =".$row["ProductID"];
                                                 $resultCat = mysqli_query($conn, $sqlSelectCat) or die("Lỗi truy vấn");
                                                 while ($rowcat = mysqli_fetch_assoc($resultCat)){
-                                                    echo  $rowcat["ProName"];
+                                                    echo  $rowcat["ProductName"];
                                                 }
                                                 ?>
                                             </td>
-                                            <td class="right"><?php echo number_format($row["price"],0,".",","); ?></td>
-                                            <td class="center"><?php echo $row["quantity"]; ?></td>
+                                            <td class="right"><?php echo number_format($row["Price"],0,".",","); ?></td>
+                                            <td class="center"><?php echo $row["Quatity"]; ?></td>
                                             <td class="right"><?php 
-                                            $total = (int)$row["price"]*(int)$row["quantity"];
+                                            $total = (int)$row["Price"]*(int)$row["Quatity"];
                                             $subtotal += $total; 
                                             echo number_format($total,0,".",",");?></td>
                                         </tr>

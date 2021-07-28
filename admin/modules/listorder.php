@@ -9,7 +9,7 @@
                 <h5 class="card-header">Danh sách đơn đặt hàng</h5>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered first">
+                        <table id="table_id" class="table table-striped table-bordered first">
                             <thead>
                                 <tr>
                                     <th>STT</th>
@@ -25,7 +25,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $sqlSelect = "SELECT * FROM order_shop";
+                                $sqlSelect = "SELECT * FROM bill";
                                 $result = mysqli_query($conn, $sqlSelect) or die("Lỗi truy vấn");
                                 if (mysqli_num_rows($result) > 0) {
                                     $count = 0;
@@ -34,16 +34,14 @@
                                         ?>
                                         <tr>
                                             <td><?php echo $count ?></td>
-                                            <td><?php echo $row["order_id"]; ?></td>                                        
-                                            <td><?php echo $row["name"]; ?></td>
-                                    <td><?php echo $row["address"] ?></td>
-                                            <td><?php echo $row["email"] ?></td>
-                                            <td><?php echo $row["phone"] ?></td>
-                                            
-                                            <td><?php echo $row["created"] ?></td>
-
-                                            <td><?php echo $row["status"] ? "Chưa xử lý" : "Đã xử lý" ?></td>
-                                            <td><a href="index.php?module=detailorder&id=<?php echo $row["order_id"] ?>">Chi tiết</a></td>
+                                            <td><?php echo $row["OrderID"]; ?></td>                                        
+                                            <td><?php echo $row["Fullname"]; ?></td>
+                                            <td><?php echo $row["Address"] ?></td>
+                                            <td><?php echo $row["Email"] ?></td>
+                                            <td><?php echo $row["Phone"] ?></td>
+                                            <td><?php echo $row["DateCreate"] ?></td>
+                                            <td><?php echo $row["Status"]?></td>
+                                            <td><a href="index.php?module=detailorder&id=<?php echo $row["OrderID"] ?>">Chi tiết</a></td>
                                            
                                         </tr>
                                     <?php }

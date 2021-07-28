@@ -22,10 +22,6 @@ if(isset($_POST["login"])){
    $result = mysqli_query($conn,$sqlLogin);
    $row = mysqli_fetch_row($result);
 
-         // if (count($row)){
-         //     $_SESSION["login"]= $row;
-         //     header("location: index.php");  
-         // }
    $count = mysqli_num_rows($result);
    
    if($count == 1) {

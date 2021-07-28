@@ -1,6 +1,6 @@
 <!--Chạy slide hình ảnh-->
 <div class="slideshow">
-    <?php if(!isset($_GET["view"])||$_GET["view"]!='shoppingcart'&&$_GET["view"]!='checkout'&&$_GET["view"]!='detail'&&$_GET["view"]!='listproduct'&&$_GET["view"]!='dangnhap'&&$_GET["view"]!='dangky'){?>
+    <?php if(!isset($_GET["view"])||$_GET["view"]!='shoppingcart'&&$_GET["view"]!='checkout'&&$_GET["view"]!='detail'&&$_GET["view"]!='listproduct'&&$_GET["view"]!='dangnhap'&&$_GET["view"]!='dangky'&&$_GET["view"]!='lienhe'){?>
     <div class="container-fluid">
         <div class="row">
         

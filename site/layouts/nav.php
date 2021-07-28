@@ -17,14 +17,14 @@
                                                     while($row = mysqli_fetch_array($result)){
                                                 ?>
                                             <li class="has-child level0">
-                                                <a class='' href="index.php?view=listproduct&id=<?php echo $row["CategoryID"]?>"><img class='' src='' alt=''> <span><?php echo $row["CategoryName"]?></span></a>
+                                                <a class='' href="#"><img class='' src='' alt=''> <span><?php echo $row["CategoryName"]?></span></a>
                                                 <ul class="level1">
                                                     <?php 
                                                     $sqlssSelect = "SELECT * FROM subcategory WHERE CategoryID=".$row["CategoryID"];
                                 $resultss = mysqli_query($conn, $sqlssSelect) or die("Lỗi truy vấn");
                                                     while($rowss = mysqli_fetch_array($resultss)){
                                                 ?>
-                                                    <li class="level1"><a class="" href=""><span><?php echo $rowss["SubName"]?></span></a></li>
+                                                    <li class="level1"><a class="" href="index.php?view=listproduct&id=<?php echo $rowss["SubCategoryID"]?>"><span><?php echo $rowss["SubName"]?></span></a></li>
                                                 <?php }?>
                                                 </ul>
                                             </li>
@@ -37,10 +37,10 @@
                                 </div>
                                 <nav class="col-md-9 col-sm-12 col-xs-12 p-l-0">
                                     <ul class='menu nav navbar-nav menu_hori'>
-                                    <li class="level0"><a class='' href='trang-chu.html'><span>Trang chủ</span></a></li>
-                                    <li class="level0"><a class='' href='gioi-thieu.html'><span>Giới thiệu</span></a></li>
-                                    <li class="level0"><a class='' href='san-pham.html'><span>Sản phẩm</span></a></li>
-                                    <li class="level0"><a class='' href='lien-he.html'><span>Liên hệ</span></a></li>
+                                    <li class="level0"><a class='' href='index.php'><span>Trang chủ</span></a></li>
+                                    <li class="level0"><a class='' href='index.php?view=gioithieu'><span>Giới thiệu</span></a></li>
+                                    <li class="level0"><a class='' href='index.php?view=listproduct'><span>Sản phẩm</span></a></li>
+                                    <li class="level0"><a class='' href='index.php?view=lienhe'><span>Liên hệ</span></a></li>
                                     </ul class='menu nav navbar-nav menu_hori'>
                                 </nav>
                             </div>
@@ -48,6 +48,8 @@
                     </div>
                 </nav>
                 <!-- End main menu -->
+
+
                 <script type="text/javascript">
                     $(document).ready(function () {
                         var str = location.href.toLowerCase();
