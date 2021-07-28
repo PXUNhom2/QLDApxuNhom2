@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 27, 2021 lúc 10:47 AM
+-- Thời gian đã tạo: Th7 28, 2021 lúc 05:12 PM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 8.0.2
 
@@ -106,6 +106,31 @@ INSERT INTO `category` (`CategoryID`, `CategoryName`, `Status`) VALUES
 (2, 'Đồng hồ nam', b'1'),
 (4, 'Đồng hồ nữ', b'1'),
 (13, 'Đồng hồ trẻ em', b'1');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `contact`
+--
+
+CREATE TABLE `contact` (
+  `ContactID` int(11) NOT NULL,
+  `Fullname` varchar(50) DEFAULT NULL,
+  `Phone` varchar(20) DEFAULT NULL,
+  `Email` varchar(50) NOT NULL,
+  `Title` varchar(50) NOT NULL,
+  `Message` text NOT NULL,
+  `Status` bit(1) NOT NULL,
+  `DateCreate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `contact`
+--
+
+INSERT INTO `contact` (`ContactID`, `Fullname`, `Phone`, `Email`, `Title`, `Message`, `Status`, `DateCreate`) VALUES
+(1, 'anh vu', '7755454', 'vuee@gmail.com', 'd', 'qqqqqqqqqqqqqqqq', b'1', '2021-07-28 21:40:19'),
+(2, 'anh vu', '7755454', 'vuee@gmail.com', 'dđ', 'ddddddddddddđ', b'1', '2021-07-28 21:59:40');
 
 -- --------------------------------------------------------
 
@@ -308,6 +333,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`CategoryID`);
 
 --
+-- Chỉ mục cho bảng `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`ContactID`);
+
+--
 -- Chỉ mục cho bảng `customer`
 --
 ALTER TABLE `customer`
@@ -373,6 +404,12 @@ ALTER TABLE `bill`
 --
 ALTER TABLE `category`
   MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT cho bảng `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `ContactID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `customer`
