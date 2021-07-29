@@ -39,7 +39,7 @@
                                     <ul class='menu nav navbar-nav menu_hori'>
                                     <li class="level0"><a class='' href='index.php'><span>Trang chủ</span></a></li>
                                     <li class="level0"><a class='' href='index.php?view=gioithieu'><span>Giới thiệu</span></a></li>
-                                    <li class="level0"><a class='' href='index.php?view=listproduct'><span>Sản phẩm</span></a></li>
+                                    <li class="level0"><a class='' href='index.php?view=listsanpham'><span>Sản phẩm</span></a></li>
                                     <li class="level0"><a class='' href='index.php?view=lienhe'><span>Liên hệ</span></a></li>
                                     </ul class='menu nav navbar-nav menu_hori'>
                                 </nav>

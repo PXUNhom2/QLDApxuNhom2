@@ -41,7 +41,7 @@
 
                 //Recipients
                 $mail->setFrom('vuanhle1509@gmail.com', 'Mail Liên hệ');
-                $mail->addAddress('choithugame3x@gmail.com');               // Add a recipient
+                $mail->addAddress('thanh1234pro@gmail.com');               // Add a recipient
                 $mail->addReplyTo($email);
                 // $mail->addCC('cc@example.com');
                 // $mail->addBCC('bcc@example.com');

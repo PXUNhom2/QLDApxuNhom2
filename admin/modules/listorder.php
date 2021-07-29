@@ -41,7 +41,7 @@
                                             <td><?php echo $row["Phone"] ?></td>
                                             <td><?php echo $row["DateCreate"] ?></td>
                                             <td><?php echo $row["Status"]?></td>
-                                            <td><a href="index.php?module=detailorder&id=<?php echo $row["OrderID"] ?>">Chi tiết</a></td>
+                                            <td><a href="index.php?module=detailorder&id=<?php echo $row["OrderID"] ?>">Preview</a></td>
                                            
                                         </tr>
                                     <?php }
