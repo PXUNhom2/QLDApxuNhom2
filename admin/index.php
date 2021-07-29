@@ -88,6 +88,7 @@ include ("../config/connection.php");
     $('#table_id').DataTable();
     } );
     </script>
+    
     </body>
 
 </html>

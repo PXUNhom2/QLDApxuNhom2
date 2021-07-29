@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 28, 2021 lúc 05:12 PM
+-- Thời gian đã tạo: Th7 29, 2021 lúc 10:33 AM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 8.0.2
 
@@ -58,7 +58,13 @@ CREATE TABLE `bill` (
 
 INSERT INTO `bill` (`OrderID`, `CustomerID`, `Fullname`, `Address`, `Phone`, `Email`, `Status`, `DateCreate`, `paymentID`) VALUES
 (1, 0, 'anh vu', 'hue', '7755454', 'vuee@gmail.com', 1, '2021-07-27 15:29:34', 1),
-(2, 0, 'anh vudđ', 'hue', '77555454', 'vueddde@gmail.com', 1, '2021-07-27 15:41:28', 1);
+(2, 0, 'anh vudđ', 'hue', '77555454', 'vueddde@gmail.com', 1, '2021-07-27 15:41:28', 1),
+(8, 0, 'anh vu', '17/3 Xuân Thủy, Vỹ Dạ, Huế', '7755454', 'leanhvu150994@gmail.com', 1, '2021-07-29 14:31:33', 1),
+(9, 0, 'anh vu', '17/3 Xuân Thủy, Vỹ Dạ, Huế', '7755454', 'leanhvu150994@gmail.com', 1, '2021-07-29 14:54:37', 1),
+(10, 0, 'anh vu', '17/3 Xuân Thủy, Vỹ Dạ, Huế', '7755454', 'leanhvu150994@gmail.com', 1, '2021-07-29 14:59:42', 1),
+(11, 0, 'anh vu', '17/3 Xuân Thủy, Vỹ Dạ, Huế', '7755454', 'leanhvu150994@gmail.com', 1, '2021-07-29 15:04:57', 1),
+(12, 0, 'anh vu', '17/3 Xuân Thủy, Vỹ Dạ, Huế', '7755454', 'leanhvu150994@gmail.com', 1, '2021-07-29 15:09:02', 1),
+(13, 0, 'anh vu', '17/3 Xuân Thủy, Vỹ Dạ, Huế', '7755454', 'leanhvu150994@gmail.com', 1, '2021-07-29 15:12:43', 1);
 
 -- --------------------------------------------------------
 
@@ -84,7 +90,25 @@ INSERT INTO `bill_detail` (`OrderID`, `ProductID`, `Price`, `Quatity`, `Discount
 (1, 38, 1, 1290000, 0),
 (2, 26, 2, 450000, 0),
 (2, 27, 1, 450000, 0),
-(2, 28, 3, 999000, 0);
+(2, 28, 3, 999000, 0),
+(8, 12, 450000, 2, 0),
+(8, 26, 450000, 2, 0),
+(9, 29, 450000, 2, 0),
+(9, 30, 490000, 2, 0),
+(9, 31, 29000, 2, 0),
+(9, 32, 30000, 2, 0),
+(10, 26, 450000, 3, 0),
+(10, 27, 450000, 2, 0),
+(10, 28, 999000, 2, 0),
+(11, 26, 450000, 3, 0),
+(11, 27, 450000, 2, 0),
+(11, 28, 999000, 2, 0),
+(12, 26, 450000, 1, 0),
+(12, 27, 450000, 2, 0),
+(12, 28, 999000, 2, 0),
+(13, 26, 450000, 1, 0),
+(13, 27, 450000, 2, 0),
+(13, 28, 999000, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -397,7 +421,7 @@ ALTER TABLE `action`
 -- AUTO_INCREMENT cho bảng `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `category`

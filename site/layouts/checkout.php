@@ -1,4 +1,11 @@
-<?php include 'function.php'; ?>
+<?php include 'function.php';
+   use PHPMailer\PHPMailer\PHPMailer;
+            use PHPMailer\PHPMailer\SMTP;
+            use PHPMailer\PHPMailer\Exception;
+            require '../libs/PHPMailer/src/Exception.php';
+            require '../libs/PHPMailer/src/PHPMailer.php';
+            require '../libs/PHPMailer/src/SMTP.php';
+ ?>
 <div class="col-md-12">
    <div class="breadcrumb clearfix">
       <ul>
@@ -42,6 +49,167 @@
                     mysqli_query($conn,$sqlInsertOrderDetail)or die("Lỗi thêm mới".$sqlInsertOrderDetail);
                 }
 
+
+                $sqlGetid = "SELECT * FROM bill where OrderID = ".$last_id;
+    $result = mysqli_query($conn,$sqlGetid);
+    $row = mysqli_fetch_row($result);
+
+
+    $orderid=$row[0];
+    $name = $row[2];
+    $email = $row[5];
+    $phone = $row[4];
+    $address = $row[3];
+    $created = $row[7];
+    $pid = $row[8];
+                 $mail = new PHPMailer(true);                                
+            try {
+                //Server settings
+                $mail->SMTPDebug = 0;                                   
+                $mail->isSMTP();                                        
+                $mail->Host = 'smtp.gmail.com';                        
+                $mail->SMTPAuth = true;                                 
+                $mail->Username = 'vuanhle1509@gmail.com';              
+                $mail->Password = 'xsgpvdsirhuydnvd';                           
+                $mail->SMTPSecure = 'tls';                              
+                $mail->Port = 587;                                      
+                $mail->CharSet = "UTF-8";
+
+                // Bật chế bộ tự mình mã hóa SSL
+                $mail->SMTPOptions = array(
+                    'ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                    )
+                );
+
+               //Recipients
+        $mail->setFrom('vuanhle1509@gmail.com', 'Mail Liên hệ');
+        $mail->addAddress($email);       
+ 
+        $mail->isHTML(true);                                    
+
+     
+        $mail->Subject = "[Có đơn hàng vừa đặt] - Mã đơn hàng $orderid";
+
+        $templateDonHang = '<tr>';
+        $templateDonHang .= '<td width="30%">Khách hàng:</td>';
+        $templateDonHang .= '<td><b>'. $name .'</b></td>';
+        $templateDonHang .= '</tr>';
+        $templateDonHang .= '<tr>';
+        $templateDonHang .= '<td width="30%">Địa chỉ:</td>';
+        $templateDonHang .= '<td><b>'. $address .'</b></td>';
+        $templateDonHang .= '</tr>';
+        $templateDonHang .= '<tr>';
+        $templateDonHang .= '<td width="30%">Số điện thoại:</td>';
+        $templateDonHang .= '<td><b>'. $phone .'</b></td>';
+        $templateDonHang .= '</tr>';
+        $templateDonHang .= '<tr>';
+        $templateDonHang .= '<td width="30%">Ngày đặt hàng:</td>';
+        $templateDonHang .= '<td><b>'. $created .'</b></td>';
+        $templateDonHang .= '</tr>';
+        $templateDonHang .= '<tr>';
+        $templateDonHang .= '<td width="30%">Hình thức thanh toán:</td>';
+
+        $sqlSelectPay = "SELECT * from payment where paymentID =".$pid;
+                                                $resultPay = mysqli_query($conn, $sqlSelectPay) or die("Lỗi truy vấn");
+                                                while ($rowPay = mysqli_fetch_assoc($resultPay)){
+                                                    $payname = $rowPay["paymentName"];
+                                                }
+        $templateDonHang .= '<td><b>'. $payname .'</b></td>';
+        $templateDonHang .= '</tr>';
+        
+
+        $templateChiTietDonHang  = '';
+                  $total = 0;
+                  $subtotal = 0;
+                  $sqlSelecta= "SELECT * FROM bill_detail WHERE OrderID=".$orderid;
+                  $resulta= mysqli_query($conn, $sqlSelecta) or die("Lỗi truy vấn");
+                        if (mysqli_num_rows($resulta) > 0) {
+                              $count = 0;
+                           while ($rowa= mysqli_fetch_assoc($resulta)){
+                                 $count++;
+                                  //echo "<prE>";print_r($rowa);die;
+            $templateChiTietDonHang .= '<tr>';       
+            $templateChiTietDonHang .= '<td align="center">' . $count . '</td>';
+            $sqlSelectCat = "SELECT * from product where ProductID =".$rowa["ProductID"];
+                                                $resultCat = mysqli_query($conn, $sqlSelectCat) or die("Lỗi truy vấn");
+                                                while ($rowcat = mysqli_fetch_assoc($resultCat)){
+                                                   $proname = $rowcat["ProductName"];
+                                                }
+            $templateChiTietDonHang .= '<td><b>' . $proname . '</b></td>';
+            $templateChiTietDonHang .= '<td>' . $rowa["Quatity"] . '</td>';
+            $templateChiTietDonHang .= '<td>' . number_format($rowa["Price"],0,".",",") . '</td>';
+                  $total = (int)$rowa["Price"]*(int)$rowa["Quatity"];
+                  $subtotal += $total; 
+            $templateChiTietDonHang .= '<td>' . number_format($total,0,".",",") . '</td>';
+            $templateChiTietDonHang .= '</tr>';
+            
+        }
+     }
+         
+
+            $templatetonghoadon = '<tr>';
+            $templatetonghoadon .= '<td colspan="4" align="right"><b>Tổng thành tiền</b></td>';
+            $templatetonghoadon .= '<td align="right"><b>'.number_format($subtotal,0,".",",").'</b></td>';
+            $templatetonghoadon .= '</tr>';
+        $body = <<<EOT
+            
+                <table border="0" width="100%" cellspacing="0">
+                  <tbody>
+                  <tr>
+                    <td align="center"><img src="https://drive.google.com/file/d/1acDD48YBAvtnM0Eufen5WhyHUTsuqW5V/view?usp=sharing" width="150px" height="100px" /></td>
+                    <td align="center">
+                        <b style="font-size: 2em;">Cửa hàng đồng hồ SHOP TVH</b><br />
+                        <small>Cung cấp các mặt hàng phụ kiện thời trang: đồng hồ, phụ kiện kèm theo ...</small><br />
+                    </td>
+                  </tr>
+                  </tbody>
+               </table>
+               
+               <p><i><u>Thông tin Đơn hàng</u></i></p>
+               <table border="0" width="100%" cellspacing="0">
+                  <tbody>
+                     $templateDonHang
+                  </tbody>
+               </table>
+               <p><i><u>Chi tiết đơn hàng</u></i></p>
+               <table border="1" width="100%" cellspacing="0" cellpadding="5">
+                  <thead>
+                     <tr>
+                        <th>STT</th>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                        $templateChiTietDonHang
+                  </tbody>
+                  <tfoot>
+                        $templatetonghoadon
+                  </tfoot>
+               </table>
+               <br />
+               <table border="0" width="100%">
+                  <tbody>
+                     <tr>
+                        <td align="center">
+                        <small>Xin cám ơn Quý khách đã ủng hộ Cửa hàng, Chúc Quý khách An Khang, Thịnh Vượng!</small>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+EOT;
+
+                $mail->Body    = $body;
+
+                $mail->send();
+            } catch (Exception $e) {
+                echo 'Lỗi khi gởi mail: ', $mail->ErrorInfo;
+            }
                   unset($_SESSION["cart"]);
                  header("location: index.php?view=congratulation");
 

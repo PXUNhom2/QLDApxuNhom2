@@ -23,42 +23,55 @@
                                  <li class="nav-item">
                                     <a class="nav-link" href="index.php?module=listproduct">QL Sản phẩm</a>
                                 </li>
-
-
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?module=listproduct">QL Banner</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?module=listproduct">QL Ưu đãi</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
-                    
+                    <?php if(isset($_SESSION["login"])){
+                        $seslogin = $_SESSION["login"][8];
+                        if ($seslogin==1) {
+                        
+                                                ?>
                      <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fas fa-meh"></i>Quản lý Người dùng</a>
                         <div id="submenu-4" class="collapse submenu" style="background: white;">
                             <ul class="nav flex-column">
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.php?module=listuser">QL Thành viên</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#r">QL Khách hàng</a>
+                                    <a class="nav-link" href="#">QL Khách hàng</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">QL Phản hồi</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=listcontact">Danh sách liên hệ</a>
+                                    <a class="nav-link" href="index.php?module=listcontact">QL phản hồi</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
-                 
+                    <?php }} ?>
+
+                    <?php if(isset($_SESSION["login"])){
+                        $seslogin = $_SESSION["login"][8];
+                        if ($seslogin==1 || $seslogin==2) {
+                        
+                                                ?>
                      <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-dolly"></i>Quản lý đặt hàng</a>  
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-dolly"></i>Quản lý bán hàng</a>  
                           <div id="submenu-6" class="collapse submenu" style="background: white;">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php?module=listorder">Danh sách đặt hàng</a>
+                                    <a class="nav-link" href="index.php?module=listorder">QL đơn hàng</a>
                                 </li>
                             </ul>
                         </div>  
-                    </li>           
+                    </li> 
+                    <?php }} ?>          
                 </ul>
             </div>
         </nav>

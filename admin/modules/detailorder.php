@@ -18,12 +18,13 @@ if(isset($_GET["module"])&&isset($_GET["id"])){
 }
 
 ?>
+
 <div class="container-fluid  dashboard-content">
     <div class="row">
         <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card">
                 <div class="card-header p-4">
-                    <a class="pt-2 d-inline-block" href="index.html">Nhà sách y dược</a>
+                    <a class="pt-2 d-inline-block" href="index.html"><img src="assets/images/logon.png" width="150px" height="100px" /></a>
 
                     <div class="float-right"> <h3 class="mb-0">HĐ số: <?php echo $orderid; ?></h3>
                      Date: <?php echo $created; ?></div>
@@ -114,10 +115,7 @@ if(isset($_GET["module"])&&isset($_GET["id"])){
         </div>
         <div class="row" >
             <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
-                <form action="detailorder_submit" method="post" accept-charset="utf-8" style="text-align: center;">
-                    <button type="submit" class="btn btn-space btn-primary" name="xacnhan">Xác nhận</button>
-                    <button class="btn btn-space btn-secondary">Cancel</button>
-                </form>
+                <a href="test.php?printid=<?php echo $orderid;?>">Xác nhận</a>
 
             </div>
         </div>
