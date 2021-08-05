@@ -43,21 +43,27 @@
                             <span class="sort-view">Sắp xếp:</span>
                             <span class="custom-dropdown custom-dropdown--white">
                                 <select class="selectProductSort sort-by custom-dropdown__select custom-dropdown__select--white" id="lbsort" onchange="window.location.href = this.options[this.selectedIndex].value">
-                                    <option selected="selected" value=" ?sort=index&amp;order =asc">Mặc định</option>
-                                    <option value=" ?sort=price&amp;order =asc">Giá tăng dần</option>
-                                    <option value=" ?sort=price&amp;order =desc">Giá giảm dần</option>
-                                    <option value=" ?sort=name&amp;order =asc">Tên sản phẩm: A to Z</option>
-                                    <option value=" ?sort=name&amp;order =desc">Tên sản phẩm: Z to A</option>
+                                    <option >Mặc định</option>
+                                    <option value=" ?view=listsanpham&amp;sort=price&amp;order=asc">Giá tăng dần</option>
+                                    <option value=" ?view=listsanpham&amp;sort=price&amp;order=desc">Giá giảm dần</option>
+                                    <option value=" ?view=listsanpham&amp;sort=productname&amp;order=asc">Tên sản phẩm: A to Z</option>
+                                    <option value=" ?view=listsanpham&amp;sort=productname&amp;order=desc">Tên sản phẩm: Z to A</option>
                                 </select>
                             </span>
                         </div>
                     </div>
-                </div>
-
-            
+                </div>            
                 <div class="product_list grid clearfix">
                          <?php
         $sqlSelect = "SELECT * FROM product";
+        
+        if ((isset($_GET['sort'])) && (isset($_GET['order']))) {
+                $sqlSelect .= " ORDER BY " ;
+                $sqlSelect .= $_GET['sort'];
+                $sqlSelect .= " ";
+                $sqlSelect .= $_GET['order'];
+            }     
+       
         $result = mysqli_query($conn, $sqlSelect) or die("Lỗi truy vấn");
         while ($row = mysqli_fetch_array($result)) {
 
