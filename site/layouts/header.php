@@ -341,7 +341,7 @@
                             $('#txtsearch').focus();
                             return;
                         }
-                        window.location = 'tim-kiem08e2.html?key=' + key;
+                        window.location = 'tim-kiem.php?key=' + key;
                     }
                     function SearchProduct2() {
                         var key = $('#txtsearch2').val();
