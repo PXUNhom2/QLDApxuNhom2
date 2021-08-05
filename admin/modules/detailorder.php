@@ -16,7 +16,6 @@ if(isset($_GET["module"])&&isset($_GET["id"])){
     $address = $row[3];
     $created = $row[7];
 }
-
 ?>
 
 <div class="container-fluid  dashboard-content">
@@ -115,7 +114,7 @@ if(isset($_GET["module"])&&isset($_GET["id"])){
         </div>
         <div class="row" >
             <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
-                <a href="test.php?printid=<?php echo $orderid;?>">Xác nhận</a>
+                <a href="test.php?printid=<?php echo $orderid;?>">In hóa đơn</a>
 
             </div>
         </div>

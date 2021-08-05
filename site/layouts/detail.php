@@ -7,6 +7,8 @@
         // print_r($rowpro);die;
         
     }
+   
+
 
   ?>
 
@@ -90,35 +92,43 @@
         
         <div class="product-content product-other">
    <h1 title="products" class="page_heading ">
-      Sản phẩm liên quan
+      Sản phẩm liên quan 
    </h1>
    <div class="product_list grid clearfix">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product-wrapper zoomIn wow" style="visibility: visible; animation-name: zoomIn;">
-         <div class="product-block product-resize m-b-20 fixheight" style="height: 295px;">
-            <div class="product-image image-resize" style="height: 208px;">
-               <div class="sold-out">Hot</div>
-               <a href="/san-pham/ hau-sua.html">
-               <img class="first-img" src="/Uploads/shop2005/images/product/hau-sua-1_master.jpg" alt="Hàu sữa">
-               </a>
-               <div class="product-actions hidden-xs">
-                  <div class="btn-add-to-cart" onclick="AddToCard(46475,1)">
-                     <a href="javascript:void(0);"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
-                  </div>
-                  <div class="btn_quickview">
-                     <a class="quickview" href="/san-pham/ hau-sua.html"><i class="fa fa-eye"></i></a>
-                  </div>
-               </div>
-            </div>
-            <div class="product-info text-center m-t-xxs-20">
-               <h3 class="pro-name">
-                  <a href="/san-pham/hau-sua.html" title="Hàu sữa">Hàu sữa</a>
-               </h3>
-               <div class="pro-prices">
-                  <span class="pro-price">120.000&nbsp;₫</span>
-               </div>
-            </div>
-         </div>
-      </div>
+      <?php
+        $sqlSelect = "SELECT * FROM `product` WHERE `SubCategoryID`=".$rowpro[1]." AND `ProductID` ORDER BY rand() LIMIT 4";
+        $result = mysqli_query($conn, $sqlSelect) or die("Lỗi truy vấn");
+        while ($row = mysqli_fetch_array($result)) {
+            ?>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product-wrapper zoomIn wow" style="visibility: visible; animation-name: zoomIn;">
+                        <div class="product-block product-resize fixheight" style="height: 299px;">
+                            <div class="product-image image-resize" style="height: 212px;">
+                                <!-- <div class="sold-out">Hot</div> -->
+                                <a href="">
+                                    <img class="first-img" src="../public/Uploads/product/<?php echo $row["image"] ?>" alt="">
+                                </a>
+                                <div class="product-actions hidden-xs">
+                                     <div class="btn-add-to-cart" onclick="addCart(<?php echo $row['ProductID']?>)">
+                                        <a href="javascript:void(0);">
+                                            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div class="btn_quickview">
+                                        <a class="quickview" href="index.php?view=detail&id=<?php echo $row["ProductID"] ?>"><i class="fa fa-eye"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info text-center m-t-xxs-20">
+                                <h3 class="pro-name">
+                                    <a href="" title=""><?php echo $row["ProductName"];?></a>
+                                </h3>
+                                <div class="pro-prices">
+                                    <span class="pro-price"><?php $price = (int)$row["Price"] ; echo number_format($price,0,",","."); ?>&nbsp;₫
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <?php }?>
    </div>
 </div>
     </div>

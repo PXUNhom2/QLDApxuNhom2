@@ -17,7 +17,7 @@
                                                     while($row = mysqli_fetch_array($result)){
                                                 ?>
                                             <li class="has-child level0">
-                                                <a class='' href="#"><img class='' src='' alt=''> <span><?php echo $row["CategoryName"]?></span></a>
+                                                <a class='' href="#"><img class='' src='' alt=''> <span style="font-size: 16px;"><?php echo $row["CategoryName"]?></span></a>
                                                 <ul class="level1">
                                                     <?php 
                                                     $sqlssSelect = "SELECT * FROM subcategory WHERE CategoryID=".$row["CategoryID"];

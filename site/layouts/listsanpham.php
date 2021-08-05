@@ -1,5 +1,25 @@
 
         <?php require_once ("layouts/blogsidebar.php")?> 
+        <?php 
+                    $result = mysqli_query($conn, 'select count(ProductID) as total from product');
+                    $row = mysqli_fetch_assoc($result);
+                    $total_records = $row['total'];
+                 
+                    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+                    $limit = 6;
+
+                    $total_page = ceil($total_records / $limit);
+
+                    if ($current_page > $total_page){
+                        $current_page = $total_page;
+                    }
+                    else if ($current_page < 1){
+                        $current_page = 1;
+                    }
+
+                    $start = ($current_page - 1) * $limit;
+                    $result = mysqli_query($conn, "SELECT * FROM product LIMIT $start, $limit");
+                 ?>
         <div class="col-md-9">
             <div class="breadcrumb clearfix">
                 <ul>
@@ -57,15 +77,14 @@
             
                 <div class="product_list grid clearfix">
                          <?php
-        $sqlSelect = "SELECT * FROM product";
-        $result = mysqli_query($conn, $sqlSelect) or die("Lỗi truy vấn");
+        
         while ($row = mysqli_fetch_array($result)) {
 
             ?>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 product-wrapper zoomIn wow" style="visibility: visible; animation-name: zoomIn;">
                         <div class="product-block product-resize m-b-20 fixheight" style="height: 295px;">
                             <div class="product-image image-resize" style="height: 208px;">
-                                <a href="">
+                                <a href="index.php?view=detail&id=<?php echo $row["ProductID"] ?>">
                                 <img class="first-img" src="../public/Uploads/product/<?php echo $row["image"] ?>" alt="">
                                 </a>
                                 <div class="product-actions hidden-xs">
@@ -83,7 +102,7 @@
                             </div>
                             <div class="product-info text-center m-t-xxs-20">
                                 <h3 class="pro-name">
-                                    <a href="" title=""><?php echo $row["ProductName"] ?></a>
+                                    <a href="index.php?view=detail&id=<?php echo $row["ProductID"] ?>" title=""><?php echo $row["ProductName"] ?></a>
                                 </h3>
                                 <div class="pro-prices">
                                     <span class="pro-price"><?php $price = (int)$row["Price"] ; echo number_format($price,0,",","."); ?>&nbsp;₫</span>
@@ -97,6 +116,41 @@
             </div>
             <!--Template--
                 --End-->
+
+
+              
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <?php 
+                            if ($current_page > 1 && $total_page > 1){
+                         ?>
+                        <li class="page-item">
+                            <?php echo '<a class="page-link" href="index.php?view=listsanpham&page='.($current_page-1).'" aria-label="Previous">' ?>
+                                <span aria-hidden="true">&laquo;</span>
+                                 <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                    <?php } ?>
+                    <?php for ($i = 1; $i <= $total_page; $i++){
+                            if ($i == $current_page){
+                     
+                        echo '<li class="page-item"><a class="page-link" href="#">'.$i.'</a></li>';
+                        }else{ 
+                        echo '<li class="page-item"><a class="page-link" href="index.php?view=listsanpham&page='.$i.'">'.$i.'</a></li>';
+                            }
+                        } ?>
+                    <?php 
+                            if ($current_page < $total_page && $total_page > 1){
+                         ?>
+                        <li class="page-item">
+                             <?php echo '<a class="page-link" href="index.php?view=listsanpham&page='.($current_page+1).'" aria-label="Next">' ?>
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    <?php } ?>
+                    </ul>
+                </nav>
         </div>
         
 <script type="text/javascript">
